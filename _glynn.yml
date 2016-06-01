@@ -1,0 +1,7 @@
+ftp_host: 'amensch.fr'
+ftp_dir: '/www'
+ftp_passive: false
+
+# optional
+ftp_port: 21                  # default 21
+ftp_secure: false              # default false
