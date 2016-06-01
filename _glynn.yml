@@ -1,4 +1,4 @@
-ftp_host: 'amensch.fr'
+ftp_host: 'ftp.cluster003.ovh.net'
 ftp_dir: '/www'
 ftp_passive: false
 

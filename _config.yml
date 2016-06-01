@@ -15,4 +15,4 @@ twitter_username: amensch
 github_username:  arthurmensch
 
 # Build settings
-markdown: redcarpet
+markdown: kramdown
