@@ -1,4 +1,4 @@
-#!/bin/bash    
+#!/bin/bash
 HOST="ftp.cluster003.hosting.ovh.net"
 USER="amenschfvx"
 PASS="A1r7t0h7u9r2"

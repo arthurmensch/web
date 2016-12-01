@@ -3,13 +3,21 @@ layout: post
 title:  "Massive Matrix Factorization for fMRI and Recommender Systems"
 date:   2016-06-10 10:19:34 +0200
 categories: research
+images:
+
+ - url: /assets/figures/brains.png
+ - alt: 10x speed-up for brain decomposition
+ - title: 10x speed-up for brain decomposition
+
 ---
-{% include mathjax.html %}
 
 As ICML approaches, I will give a quick overview of our work on efficient
 matrix factorization for very large datasets. Our focus was to scale *matrix
 factorization* techniques for functional MRI, a domain where data to
-decompose is now at terabyte scale. Along the way, we also designed a encouraging proof-of-concept experiment for collaborative filtering.
+decompose is now at terabyte scale. Along the way, we also designed a encouraging proof-of-concept
+experiment for collaborative filtering.
+
+{% include mathjax.html %}
 
 We'll start by reviewing matrix factorization techniques for interpretable data
 decomposition. $$\def\EE{\mathbb E}    \def\RR{\mathbb R}    \def\PP{\mathbb P}    \def\A{\mathbf A} \def\D{\mathbf D} \def\M{\mathbf M} \def\X{\mathbf X} \def\b{\mathbf b} \def\a{\mathbf a} \def\d{\mathbf d} \def\x{\mathbf x} \def\balpha{\boldsymbol{\alpha}} \def\argmin{\text{argmin}}$$
