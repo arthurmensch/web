@@ -9,7 +9,7 @@ order: 3
 Here is a list of my publications, extracted from [HAL](https://hal.archives-ouvertes.fr/).
 {% raw %}
 <iframe src="https://haltools.archives-ouvertes.fr/Public/afficheRequetePubli.php?auteur_exp=Arthur%2C+Mensch&CB_auteur=oui&CB_titre=oui&CB_article=oui&langue=Anglais&tri_exp=date_publi&ordre_aff=TA&Fen=Aff&css=../css/VisuCondenseSsCadre.css"
- style="width: 100%; border:none" height="600px" scrolling="yes">
+ style="width: 100%; border:none" height="550px" scrolling="yes">
  &nbsp;
  </iframe>
 {% endraw %}
