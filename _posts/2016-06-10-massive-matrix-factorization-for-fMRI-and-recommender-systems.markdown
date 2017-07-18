@@ -23,7 +23,7 @@ decomposition.
 ## Understanding data with matrix factorization
 
 Unsupervised learning aim at finding patterns in a sequence of n samples
-$$(x_t)t$$, living in a $$p$$ dimensional space. Typically, this involve finding a few statistics that describe data in a *compressed* manner. Our dataset can be seen as a large matrix $$X \in RR^{n \times p}$$. Factorizing such matrix has proven a very flexible manner to extract interesting pattern. Namely, we want to find two *small* matrices $$D$$ (the *dictionary*) and $$A$$ (the *code*) with $$k$$ columns/rows whose product approximates $$X$$
+$$(x_t)t$$, living in a $$p$$ dimensional space. Typically, this involve finding a few statistics that describe data in a *compressed* manner. Our dataset can be seen as a large matrix $$X \in R^{n \times p}$$. Factorizing such matrix has proven a very flexible manner to extract interesting pattern. Namely, we want to find two *small* matrices $$D$$ (the *dictionary*) and $$A$$ (the *code*) with $$k$$ columns/rows whose product approximates $$X$$
 
 <img src="/assets/img/16-mmf/drawings/poster_model_sparse.png" width="80%" style="display: block; margin: 0 auto;" title="Model" />
 
@@ -45,7 +45,7 @@ What we are most interested in is the dictionary $$D$$, that holds, say, 70 spar
 A little math should be introduced to better grasp our problem. Decomposing $$X$$ into the product $$D A$$ can be done by solving an optimization problem (see **[Olshausen '97]** for the initial problem setting):
 
 $$
-Min_{D \in \mathcal{C}, A \in R^{k\times p}} \Vert X - D A \Vert_2^2 + \lambda \Omega(\alpha)
+\min_{D \in \mathcal{C}, A \in R^{k\times p}} \Vert X - D A \Vert_2^2 + \lambda \Omega(\alpha)
 $$
 
 where structure and sparsity can be imposed via constraints (convex set $$\mathcal{C}$$)
@@ -56,14 +56,14 @@ Solving this minimization problem is where all the honey is : let's see what met
 A naive solver alternatively minimize the loss function over $$A$$ and $$D$$. Meaning, given $$X$$ and $$A$$, find the best $$D$$, given $$X$$ and $$D$$, find the best $$A$$, and repeat. If we look at it from a dictionary oriented point of view, we define
 $$ A(D) = \text{arg}\,\min_{A \in R^{k \times n}} \Vert X - D A \Vert_F^2  + \lambda \Omega(A) $$
 
-$$ \alpha_i(D) = \text{arg}\,\min_{A \in R^{k \times n}} \Vert X_i - D \alpha_i \Vert_F^2  + \lambda \Omega(\alpha_i) $$
+$$ \alpha_i(D) = \text{arg}\,\min_{A \in R^{k \times n}} \Vert x_i - D \alpha_i \Vert_F^2  + \lambda \Omega(\alpha_i) $$
 
 where the second equality has used the colummns $$(\alpha_i)$$ of $$A$$ -- we'll see why in a minute. The naive algorithm simply consist in doing
 
 $$
 \begin{aligned}
 D_t &= \text{arg}\,\min_{D \in \mathcal{C}} \Vert X - D A(D_{t-1}) \Vert_F^2 \\
-&= Min_{D} \sum_{i=1}^n \Vert X_i - D \alpha_i(D_{n-1})) \Vert_F^2
+&= \min_{D} \sum_{i=1}^n \Vert x_i - D \alpha_i(D_{n-1})) \Vert_F^2
 \end{aligned}
 $$
 
@@ -79,11 +79,11 @@ As the drawing above indicates, we look at data sample $$x_t$$ after
 sample. At iteration $$t$$t, we use the current dictionary to compute the associated loadings
 $$\alpha_t$$:
 
-$$\alpha_t(D) = \text{arg}\,\min_{A \in R^{k \times n}} \Vert X_t - D_{t-1} \alpha_t \Vert_F^2  + \lambda \Omega(\alpha_t)$$
+$$\alpha_t(D) = \text{arg}\,\min_{A \in R^{k \times n}} \Vert x_t - D_{t-1} \alpha_t \Vert_F^2  + \lambda \Omega(\alpha_t)$$
 
 We then solve, at each iteration
 
-$$D_t = \text{arg}\,\min_{D \in \mathcal{C}} \sum_{i=1}^t \Vert X_i - D \alpha_i \Vert_F^2$$
+$$D_t = \text{arg}\,\min_{D \in \mathcal{C}} \sum_{i=1}^t \Vert x_i - D \alpha_i \Vert_F^2$$
 
 This look very much like the original update, except we use outdated
 $$\alpha_t$$ to approximate our objective function. The essential idea here is
@@ -100,13 +100,13 @@ very low p compared to fMRI setting**.
 
 This is where our contribution begins. We want to provide an algorithm that
  scales not only in the number of samples but also in the sample dimension. To
- scale in the number of samples, we went from using $$X$$ to using $$X_t$$ at
- each iteration, allowing around n time faster iterations. Here, $$X_t$$ is
+ scale in the number of samples, we went from using $$X$$ to using $$x_t$$ at
+ each iteration, allowing around n time faster iterations. Here, $$x_t$$ is
  still too large, and **we want to acquire information even faster**.
 
 This is where we introduce *random subsampling*: can we improve the dictionary
 with only a *fraction* of a sample at each iteration. The answer is yes, as we'll
-now show.  The algorithm we propose loads a fraction of a sample $$X_t$$ at each
+now show.  The algorithm we propose loads a fraction of a sample $$x_t$$ at each
 iteration and use it to update the approximation of the optimization problem.
 The fraction is different at each iteration: this way, we are able to obtain
 information about the whole feature space, in a stochastic manner. We go a step
@@ -114,7 +114,7 @@ beyond in randomness:
 
 ![Random subsampling](/assets/img/16-mmf/drawings/poster_next_level.png)
 
-$$M_t X_t$$ corresponds to a subsampling of $$X_t$$, choosing $$M_t$$ to be a $$[0, 1]$$ diagonal matrix with, say, 90% zeros.
+$$M_t x_t$$ corresponds to a subsampling of $$x_t$$, choosing $$M_t$$ to be a $$[0, 1]$$ diagonal matrix with, say, 90% zeros.
 
 The whole difficulty lies in constructing the right approximations so that the
 problem we solve at each iteration looks more and more like the original
@@ -137,10 +137,10 @@ each iteration.  As we'll see, on large datasets, the balance is therefore very
 much on the side of single iteration computational speed-up.
 
 The constraint we introduce on iteration complexity restrains much what we are able to do. To sum up, we have to adapt the three steps of the online algorithm
-- Computing the code from past iterate : we rely on a *sketched* version of code computation, where we only look at $$M_t$$ features of $$X_t$$ and $$D_{t-1}$$
+- Computing the code from past iterate : we rely on a *sketched* version of code computation, where we only look at $$M_t$$ features of $$x_t$$ and $$D_{t-1}$$
 
 $$
-\begin{aligned}\alpha_t(D) &= \text{arg}\,\min_{A \in R^{k \times n}} \Vert M_t(X_t - D_{t-1} \alpha_t) \Vert_F^2 + \lambda \frac{s}{p} \Omega(\alpha)
+\begin{aligned}\alpha_t(D) &= \text{arg}\,\min_{A \in R^{k \times n}} \Vert M_t(x_t - D_{t-1} \alpha_t) \Vert_F^2 + \lambda \frac{s}{p} \Omega(\alpha)
 \end{aligned}
 $$
 
@@ -208,7 +208,7 @@ welcome !
 
 - **[Mairal '10]** Mairal, Julien, Francis Bach, Jean Ponce, and Guillermo Sapiro. “Online Learning for Matrix Factorization and Sparse Coding.” The Journal of Machine Learning Research, 2010.
 
-- **[Mairal '13]** Mairal, Julien. “Stochastic Majorization-Minimization Algorithms for Large-Scale Optimization.” In Advances in Neural Information Processing Systems, 2013.
+- **[Mairal '13]** Mairal, Julien. “Stochastic Majorization-\minimization Algorithms for Large-Scale Optimization.” In Advances in Neural Information Processing Systems, 2013.
 
 - **[Olshausen '97]** Olshausen, Bruno A., and David J. Field. “Sparse Coding with an Overcomplete Basis Set: A Strategy Employed by V1?” Vision Research, 1997.
 

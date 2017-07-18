@@ -20,9 +20,7 @@ tagline:             Machine learning / Neuro-imaging / Data
 description:         Machine learning / Neuro-imaging / Data
 
 # This should be the same author as first entry in `_data/authors.yml`
-author:
-  name:              Arthur Mensch
-  email:             <arthur.mensch@m4x.org>
+author:              amensch
 
 # Fallback image and color
 image:               /assets/img/agrigente.jpg
@@ -109,6 +107,7 @@ exclude:
   - package-lock.json
   - Gemfile
   - Gemfile.lock
+  - Makefile
 
 kramdown:
   footnote_backlink: '&#x21a9;&#xfe0e;'
