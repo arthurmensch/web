@@ -13,7 +13,7 @@ url:                 http://amensch.fr
 baseurl:             ''
 
 # A very short description of your page
-tagline:             Machine learning / Neuro-imaging / Data
+tagline:             Machine learning / Optimization / Data
 
 # A short description of the page, used in the sidebar and as fallback for the meta description tag.
 # Markdown enabled, but don't use more than one paragraph (enforced by `>`)
