@@ -98,6 +98,7 @@ gems:
   - jekyll-sitemap
   - jekyll-paginate
   - jekyll-redirect-from
+  - jekyll-twitter-plugin
 
 exclude:
   - README.md
