@@ -2,6 +2,7 @@
 layout: page
 title: Publications
 permalink: /publications/
+menu: true
 order: 3
 ---
 ## Papers

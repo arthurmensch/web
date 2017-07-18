@@ -5,7 +5,7 @@ date:   2016-06-10 10:19:34 +0200
 categories: research
 images:
 
- - url: /assets/figures/brains.png
+ - url: /assets/img/figures/brains.png
  - alt: 10x speed-up for brain decomposition
  - title: 10x speed-up for brain decomposition
 
@@ -17,8 +17,6 @@ factorization* techniques for functional MRI, a domain where data to
 decompose is now at terabyte scale. Along the way, we also designed a encouraging proof-of-concept
 experiment for collaborative filtering.
 
-{% include mathjax.html %}
-
 We'll start by reviewing matrix factorization techniques for interpretable data
 decomposition. $$\def\EE{\mathbb E}    \def\RR{\mathbb R}    \def\PP{\mathbb P}    \def\A{\mathbf A} \def\D{\mathbf D} \def\M{\mathbf M} \def\X{\mathbf X} \def\b{\mathbf b} \def\a{\mathbf a} \def\d{\mathbf d} \def\x{\mathbf x} \def\balpha{\boldsymbol{\alpha}} \def\argmin{\text{argmin}}$$
 
@@ -27,7 +25,7 @@ decomposition. $$\def\EE{\mathbb E}    \def\RR{\mathbb R}    \def\PP{\mathbb P} 
 Unsupervised learning aim at finding patterns in a sequence of n samples
 $(x_t)t$, living in a $p$ dimensional space. Typically, this involve finding a few statistics that describe data in a *compressed* manner. Our dataset can be seen as a large matrix $\X \in \RR^{n \times p}$. Factorizing such matrix has proven a very flexible manner to extract interesting pattern. Namely, we want to find two *small* matrices $\D$ (the *dictionary*) and $\A$ (the *code*) with $k$ columns/rows whose product approximates $\X$
 
-<img src="/assets/drawings/poster_model_sparse.png" width="80%" style="display: block; margin: 0 auto;" title="Model" />
+<img src="/assets/img/drawings/poster_model_sparse.png" width="80%" style="display: block; margin: 0 auto;" title="Model" />
 
 Small can mean several things here : we may impose $k$ to be small, which amounts to search for a low rank representation of the matrix $\X$, and thus a subspace of $\RR^p$ that approximately include all samples. For interpretability, it can be useful, as in the drawing above, to impose sparsity on $\D$ -- this is what we'll do in fMRI.
 
@@ -37,7 +35,7 @@ In other settings, we may have $k$ large but impose $\A$ *sparse*, leading to an
 
 We can already instantiate matrix factorization for fMRI as this will make things clearer. We study resting-state functional imaging : 500 subjects go four times in a scanner, to get their brain activity recorded during 15 minutes while at rest -- roughly, a 3D image of their brain activity is acquired every second. This yields 2 millions 3D images of brain activity, each of them with 200 000 *voxels* -- **2TB** of dense data. We want to extract spatial activity maps that constitute a good basis for these images:
 
-<img src="/assets/drawings/poster_fmri_dl_flat.png" width="80%" style="display: block; margin: 0 auto;" title="Model" />
+<img src="/assets/img/drawings/poster_fmri_dl_flat.png" width="80%" style="display: block; margin: 0 auto;" title="Model" />
 
 
 What we are most interested in is the dictionary $D$, that holds, say, 70 sparse spatial maps. We expect those to capture functional networks, segmenting the auditory, visual, motor cortex, etc. Sparsity and low-rank are key for pattern discovery: we want to find few maps, with few activated regions.
@@ -72,7 +70,7 @@ This takes time, as the whole data $\X$ is loaded at each iteration. In fact, it
 
 A very efficient way to get past this intractability was introduced by **[Mairal '10]**. Computing $\A$ for the whole dataset is costly, and overkill for a single step of improving the dictionary: we can maintain an approximation of this code by streaming the data and optimizing the dictionary along the stream.
 
-<img src="/assets/drawings/poster_model_sparse_online.png" width="80%" style="display: block; margin: 0 auto;" title="Model" />
+<img src="/assets/img/drawings/poster_model_sparse_online.png" width="80%" style="display: block; margin: 0 auto;" title="Model" />
 
 As the drawing above indicates, we look at data sample $x_t$ after
 sample. At iteration $t$t, we use the current dictionary to compute the associated loadings
@@ -111,7 +109,7 @@ The fraction is different at each iteration: this way, we are able to obtain
 information about the whole feature space, in a stochastic manner. We go a step
 beyond in randomness:
 
-![Random subsampling](/assets/drawings/poster_next_level.png)
+![Random subsampling](/assets/img/drawings/poster_next_level.png)
 
 $\M_t \x_t$ corresponds to a subsampling of $\X_t$, choosing $\M_t$ to be a $[0, 1]$ diagonal matrix with, say, 90% zeros.
 
@@ -158,11 +156,11 @@ In no more than 10h, our algorithm, using a 12-fold reduction, is able to recove
 
 Displaying the contour of these maps makes it clearly appear:
 
-![Brains](/assets/figures/brains.png)
+![Brains](/assets/img/figures/brains.png)
 
 We can quantify the speed-up we obtain by looking at convergence curve, that decribe how good the dictionary perform as a basis on a test set, against time spent in computation.
 
-<img src="/assets/figures/bench.png" width="70%" style="display: block; margin: 0 auto;" title="Bench" />
+<img src="/assets/img/figures/bench.png" width="70%" style="display: block; margin: 0 auto;" title="Bench" />
 
 **Convergence is obtained x10 more quickly** with a 12 times reduction.
 This is very valuable for practioners ! Information is indeed acqired faster,
@@ -181,7 +179,7 @@ hyperparmeter -- our algorithm is, unlike SGD, not very dependant on
 hyperparameters. We get good results on large datasets (Netflix,
 Movielens 10M), as these benches show. On **Netflix**, our algorithm is **7x faster** than the coordinate descent solver, which was the fastest well-packaged collaborative filtering algorithm we could find.
 
-<img src="/assets/figures/rec_bench.png" width="100%" style="display: block; margin: 0 auto;" title="Collaborative filtering benches" />
+<img src="/assets/img/figures/rec_bench.png" width="100%" style="display: block; margin: 0 auto;" title="Collaborative filtering benches" />
 
 Our model is very simple (minimization of an $\ell_2$ loss), and we do not get
 state of the art prediction on Netflix. However, this experiment shows that our
