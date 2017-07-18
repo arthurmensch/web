@@ -2,7 +2,7 @@
 layout: post
 title:  "Massive Matrix Factorization for fMRI and Recommender Systems"
 date:   2016-06-10 10:19:34 +0200
-categories: research
+tag: [optimization, matrix factorization]
 images:
 
  - url: /assets/img/16-mmf/figures/brains.png
