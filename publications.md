@@ -16,10 +16,11 @@ order: 3
 
 ## Oral presentations
 - October 2016: [RecSys FR presentation (video)](https://www.youtube.com/watch?v=WU7GL2LFWwc) / [SlideShare](http://www.slideshare.net/ruthraarthur/dictionary-learning-for-massive-matrix-factorization-applications-to-collaborative-filtering)
-/ [Slides]({{site.url}}{{site.baseurl}}/docs/presentations/criteo_presentation.pdf) Massive Matrix Factorization : Application to *collaborative filtering*
-- June 2016: [ICML '16 presentation (video)](http://techtalks.tv/talks/dictionary-learning-for-massive-matrix-factorization/62416/) / [SlideShare](http://www.slideshare.net/ruthraarthur/dictionary-learning-for-massive-matrix-factorization-66958894) / [Slides]({{site.url}}{{site.baseurl}}/docs/presentations/icml_presentation.pdf) Dictionary Learning for Massive Matrix Factorization
+/ [Slides]({{ '/docs/presentations/criteo_presentation.pdf' | absolute_url }}) Massive Matrix Factorization : Application to *collaborative filtering*
+- June 2016: [ICML '16 presentation (video)](http://techtalks.tv/talks/dictionary-learning-for-massive-matrix-factorization/62416/) / [SlideShare](http://www.slideshare.net/ruthraarthur/dictionary-learning-for-massive-matrix-factorization-66958894) /
+ [Slides]({{ 'docs/presentations/icml_presentation.pdf' | absolute_url }}) Dictionary Learning for Massive Matrix Factorization
 
 ## Posters
-- [ICML 2016]({{site.url}}{{site.baseurl}}/docs/posters/icml_poster.pdf) Dictionary Learning for Massive Matrix Factorization
-- [ISBI 2016]({{site.url}}{{site.baseurl}}/docs/posters/isbi_poster.pdf) Compressed Online Dictionary Learning for Fast fMRI Decomposition
-- [OHBM 2016]({{site.url}}{{site.baseurl}}/docs/posters/ohbm_poster.pdf) Compressed Online Dictionary Learning for Fast fMRI Decomposition -->
+- [ICML 2016]({{ '/docs/posters/icml_poster.pdf' | absolute_url }}) Dictionary Learning for Massive Matrix Factorization
+- [ISBI 2016]({{ '/docs/posters/isbi_poster.pdf' | absolute_url }}) Compressed Online Dictionary Learning for Fast fMRI Decomposition
+- [OHBM 2016]({{ '/docs/posters/ohbm_poster.pdf' | absolute_url }}) Compressed Online Dictionary Learning for Fast fMRI Decomposition -->

@@ -11,7 +11,7 @@ images:
 
 ---
 
-As ICML approaches, I will give a quick overview of our work on efficient
+Before presenting it at ICML New York, I will give a quick overview of our work on efficient
 matrix factorization for very large datasets. Our focus was to scale *matrix
 factorization* techniques for functional MRI, a domain where data to
 decompose is now at terabyte scale. Along the way, we also designed a encouraging proof-of-concept

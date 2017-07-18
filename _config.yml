@@ -53,8 +53,8 @@ copyright:           'Arthur Mensch &copy; 2017. All rights reserved.'
 permalink:           pretty
 
 # Pagination configuration (used by the `blog` layout)
-paginate:            5
-paginate_path:       '/blog/page-:num/'
+# paginate:            5
+# paginate_path:       '/posts/page-:num/'
 
 # If you are upgrading form a v5 verison of Hydejack, uncomment the two lines below,
 # so that the location of the feed XML stays the same.
