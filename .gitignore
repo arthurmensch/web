@@ -44,3 +44,4 @@ node_modules
 .jekyll-metadata
 *.gem
 .tweet-cache
+*.xcf
