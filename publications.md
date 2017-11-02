@@ -9,7 +9,7 @@ order: 3
 
 {% raw %}
 <iframe src="https://haltools.archives-ouvertes.fr/Public/afficheRequetePubli.php?auteur_exp=Arthur%2C+Mensch&CB_auteur=oui&CB_titre=oui&CB_article=oui&langue=Anglais&tri_exp=date_publi&ordre_aff=TA&Fen=Aff&css=../css/VisuCondenseSsCadre.css"
- style="width: 100%; border:none" height="530px" scrolling="yes">
+ style="width: 100%; border:none" height="600px" scrolling="yes">
  &nbsp;
  </iframe>
 {% endraw %}
