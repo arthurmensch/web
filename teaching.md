@@ -5,8 +5,13 @@ permalink: /teaching/
 menu: true
 order: 5
 ---
-Numerical analysis (ENSAE 1A)
------------------------------
+
+## Deep learning (M2 Data Science - Polytechnique / Paris-Saclay)
+
+- [Slides + Labs](https://github.com/m2dsupsdlclass/lectures-labs) of the course that I TAed.
+- I gave a [three notebook tutorial](https://github.com/m2dsupsdlclass/lectures-labs/tree/master/labs/08_frameworks) on [Pytorch](pytorch.org).
+
+## Numerical analysis (ENSAE 1A)
 
 - Python notebooks with (some) corrected exercices are available [in this repository](http://github.com/arthurmensch/numerical_analysis) -- either use git to check it out or download it as a zip file.
 - I highly recommend looking at the Python notebooks from [Numerical Tours of Data Sciences](http://www.numerical-tours.com/) for those of you who want to dig further into optimization/data science/graphics. 

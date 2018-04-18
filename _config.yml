@@ -98,6 +98,8 @@ gems:
   - jekyll-sitemap
   - jekyll-paginate
   - jekyll-redirect-from
+  - jekyll-scholar
+  - unicode
 
 exclude:
   - README.md
@@ -125,3 +127,13 @@ compress_html:
 
 sass:
   style:             compressed
+
+scholar:
+  style: assets/ieee-with-url.csl
+  sort_by: year,month
+  order: descending
+  bibliography_list_tag: ul
+  bibtex_filters:
+    - latex
+    - url
+

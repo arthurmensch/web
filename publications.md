@@ -7,29 +7,39 @@ order: 3
 ---
 ## Papers
 
-{% raw %}
-<iframe src="https://haltools.archives-ouvertes.fr/Public/afficheRequetePubli.php?auteur_exp=Arthur%2C+Mensch&CB_auteur=oui&CB_titre=oui&CB_article=oui&langue=Anglais&tri_exp=date_publi&ordre_aff=TA&Fen=Aff&css=../css/VisuCondenseSsCadre.css"
- style="width: 100%; border:none" height="620px" scrolling="no">
- &nbsp;
- </iframe>
-{% endraw %}
-
 [Google Scholar](https://scholar.google.fr/citations?user=F8riAN8AAAAJ&hl=fr)
 
+{% bibliography %}
+
 ## Oral presentations
-- November 2017: Presentation at ATR (Kyoto, Japan), invited by [Okito Yamashita](http://www.cns.atr.jp/~oyamashi/contents/profile/profile_e.html). [Paper](https://hal.archives-ouvertes.fr/hal-01626823v2) / [Slides]({{'docs/presentations/atr_presentation.pdf' | absolute_url }})
+- April 2018: Aix-Marseille Université, invited
+by Caroline Chaux-Moulin [Paper](https://hal.archives-ouvertes.fr/hal-01431618) / [Slides]({{'docs/presentations/uam_presentation.pdf' | absolute_url }})
+  - Stochastic Subsampling for Factorizing Huge Matrices
+- April 2018: Facebook Artificial Intelligence Research (Paris, France)
+[Paper](https://arxiv.org/abs/1802.03676) / [Slides]({{'docs/presentations/diff_dp.pdf' | absolute_url }})
+  - Differentiable Dynamic Programming for Structured Prediction and Attention
+- March 2018: Deep Learning Meetup (Paris, France)
+[Paper](https://arxiv.org/abs/1802.03676) / [Slides]({{'docs/presentations/diff_dp.pdf' | absolute_url }})
+  - Differentiable Dynamic Programming for Structured Prediction and Attention
+- January 2018: ENS Ulm (Paris, France), invited by Florent Krzakala
+[Paper](https://hal.archives-ouvertes.fr/hal-01431618) / [Slides]({{'docs/presentations/uam_presentation.pdf' | absolute_url }})
+  - Stochastic Subsampling for Factorizing Huge Matrices
+- November 2017: ATR (Kyoto, Japan), invited by [Okito Yamashita](http://www.cns.atr.jp/~oyamashi/contents/profile/profile_e.html). [Paper](https://hal.archives-ouvertes.fr/hal-01626823v2) / [Slides]({{'docs/presentations/atr_presentation.pdf' | absolute_url }})
    - Learning Neural Representations of Human Cognition across Many fMRI Studies
-- July 2017: Presentation at ISI (Marrakech, Morocco), invited by
+- July 2017: ISI (Marrakech, Morocco), invited by
 [David Degras](http://www.math.umb.edu/people/faculty_homepage.php?id=234). [Slides]({{ 'docs/presentations/icml_presentation.pdf' | absolute_url }})
   - Massive Matrix Factorization for Resting-State fMRI Decomposition
-- October 2016: Presentation at RecSys FR (Paris, France). [(video)](https://www.youtube.com/watch?v=WU7GL2LFWwc) / [SlideShare](http://www.slideshare.net/ruthraarthur/dictionary-learning-for-massive-matrix-factorization-applications-to-collaborative-filtering)
+- October 2016: RecSys FR (Paris, France). [Video](https://www.youtube.com/watch?v=WU7GL2LFWwc) / [SlideShare](http://www.slideshare.net/ruthraarthur/dictionary-learning-for-massive-matrix-factorization-applications-to-collaborative-filtering)
 / [Slides]({{ '/docs/presentations/criteo_presentation.pdf' | absolute_url }})
   - Massive Matrix Factorization : Application to *collaborative filtering*
-- June 2016: Presentation at ICML (New York, USA). [(video)](http://techtalks.tv/talks/dictionary-learning-for-massive-matrix-factorization/62416/) / [SlideShare](http://www.slideshare.net/ruthraarthur/dictionary-learning-for-massive-matrix-factorization-66958894) /
+- June 2016: ICML (New York, USA). [Video](http://techtalks.tv/talks/dictionary-learning-for-massive-matrix-factorization/62416/) / [SlideShare](http://www.slideshare.net/ruthraarthur/dictionary-learning-for-massive-matrix-factorization-66958894) /
  [Slides]({{ 'docs/presentations/icml_presentation.pdf' | absolute_url }})
   - Dictionary Learning for Massive Matrix Factorization
 
 ## Posters
+- [SMAI-MODE 2018]({{ '/docs/posters/opt_poster.pdf' | absolute_url }}): Stochastic Subsampling for Factorizing Huge Matrices
+- [MLSS 2017]({{ '/docs/posters/opt_poster.pdf' | absolute_url }}): Stochastic Subsampling for Factorizing Huge Matrices
+- [OPT 2017]({{ '/docs/posters/opt_poster.pdf' | absolute_url }}): Stochastic Subsampling for Factorizing Huge Matrices
 - [ICML 2016]({{ '/docs/posters/icml_poster.pdf' | absolute_url }}): Dictionary Learning for Massive Matrix Factorization
 - [ISBI 2016]({{ '/docs/posters/isbi_poster.pdf' | absolute_url }}): Compressed Online Dictionary Learning for Fast fMRI Decomposition
 - [OHBM 2016]({{ '/docs/posters/ohbm_poster.pdf' | absolute_url }}): Compressed Online Dictionary Learning for Fast fMRI Decomposition -->
