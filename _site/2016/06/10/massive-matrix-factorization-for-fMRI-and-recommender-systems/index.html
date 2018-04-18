@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en"><!--
+ __  __                __                                     __
+/\ \/\ \              /\ \             __                    /\ \
+\ \ \_\ \   __  __    \_\ \      __   /\_\      __       ___ \ \ \/'\
+ \ \  _  \ /\ \/\ \   /'_` \   /'__`\ \/\ \   /'__`\    /'___\\ \ , <
+  \ \ \ \ \\ \ \_\ \ /\ \L\ \ /\  __/  \ \ \ /\ \L\.\_ /\ \__/ \ \ \\`\
+   \ \_\ \_\\/`____ \\ \___,_\\ \____\ _\ \ \\ \__/.\_\\ \____\ \ \_\ \_\
+    \/_/\/_/ `/___/> \\/__,_ / \/____//\ \_\ \\/__/\/_/ \/____/  \/_/\/_/
+                /\___/                \ \____/
+                \/__/                  \/___/
+
+Powered by Hydejack v6.4.0 (https://qwtel.com/hydejack/)
+-->
+
+
+
+
+
+
+
+
+
+<head>
+  <!-- =============== -->
+<!-- META            -->
+<!-- =============== -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+
+
+
+  <title>Massive Matrix Factorization for fMRI and Recommender Systems &middot; Arthur Mensch</title>
+
+
+
+<meta name="description" content="Before presenting it at ICML New York, I will give a quick overview of our work on efficient matrix factorization for very large datasets. Our focus was to scale matrix factorization techniques for functional MRI, a domain where data to decompose is now at terabyte scale. Along the way, we...">
+
+
+
+<!-- =============== -->
+<!-- LINKS           -->
+<!-- =============== -->
+<link rel="canonical" href="http://localhost:4000/2016/06/10/massive-matrix-factorization-for-fMRI-and-recommender-systems/">
+
+<link rel="alternate" type="application/atom+xml" title="Arthur Mensch Feed" href="http://localhost:4000/feed.xml">
+
+
+
+
+
+<!-- Place favicon.ico in the root directory -->
+
+<!-- =============== -->
+<!-- SCRIPTS         -->
+<!-- =============== -->
+<script>
+  !function(n,e){function t(n,e){n.onload=function(){this.onerror=this.onload=null,e(null,n)},n.onerror=function(){this.onerror=this.onload=null,e(new Error("Failed to load "+this.src),n)}}function o(n,e){n.onreadystatechange=function(){"complete"!=this.readyState&&"loaded"!=this.readyState||(this.onreadystatechange=null,e(null,n))}}n._loaded=!1,n.loadJSDeferred=function(a,d){function r(){n._loaded=!0;var r=e.createElement("script");r.src=a,d&&(("onload"in r?t:o)(r,d),r.onload||t(r,d));var l=e.getElementsByTagName("script")[0];l.parentNode.insertBefore(r,l)}n._loaded?r():n.addEventListener?n.addEventListener("load",r,!1):n.attachEvent?n.attachEvent("onload",r):n.onload=r}}(window,document);
+
+  !function(e){"use strict";var n=function(n,t,o){function i(e){if(a.body)return e();setTimeout(function(){i(e)})}function r(){l.addEventListener&&l.removeEventListener("load",r),l.media=o||"all"}var d,a=e.document,l=a.createElement("link");if(t)d=t;else{var f=(a.body||a.getElementsByTagName("head")[0]).childNodes;d=f[f.length-1]}var s=a.styleSheets;l.rel="stylesheet",l.href=n,l.media="only x",i(function(){d.parentNode.insertBefore(l,t?d:d.nextSibling)});var u=function(e){for(var n=l.href,t=s.length;t--;)if(s[t].href===n)return e();setTimeout(function(){u(e)})};return l.addEventListener&&l.addEventListener("load",r),l.onloadcssdefined=u,u(r),l};"undefined"!=typeof exports?exports.loadCSS=n:e.loadCSS=n}("undefined"!=typeof global?global:this);
+
+  !function(t){if(t.loadCSS){var e=loadCSS.relpreload={};if(e.support=function(){try{return t.document.createElement("link").relList.supports("preload")}catch(t){return!1}},e.poly=function(){for(var e=t.document.getElementsByTagName("link"),r=0;r<e.length;r++){var n=e[r];"preload"===n.rel&&"style"===n.getAttribute("as")&&(t.loadCSS(n.href,n,n.getAttribute("media")),n.rel=null)}},!e.support()){e.poly();var r=t.setInterval(e.poly,300);t.addEventListener&&t.addEventListener("load",function(){e.poly(),t.clearInterval(r)}),t.attachEvent&&t.attachEvent("onload",function(){t.clearInterval(r)})}}}(this);
+
+  window.disablePushState = false;
+  window.disableDrawer = false;
+</script>
+
+<!--[if lt IE 9]>
+<script src="https://unpkg.com/html5shiv/dist/html5shiv.min.js"></script>
+<![endif]-->
+
+<!-- =============== -->
+<!-- STYLES          -->
+<!-- =============== -->
+<!--[if gt IE 8]><!---->
+<style>
+  
+  article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}mark{background:#FF0;color:#000}*{box-sizing:border-box}html,body{margin:0;padding:0}html{font-size:16px;line-height:1.75}body{color:#333;background-color:#fff;overflow-y:scroll}a{text-decoration:none}.lead{margin-left:-1rem;margin-right:-1rem}img,.img{display:block;max-width:100%;margin-bottom:1rem;border:none}img.lead,.img.lead{max-width:calc(100% + 2rem);width:calc(100% + 2rem)}h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6,.heading{font-weight:bold;text-rendering:optimizeLegibility}h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{margin:3rem 0 1rem;line-height:1.6}h1,.h1{font-size:2rem;line-height:1.25}h2,.h2{font-size:1.5rem}h3,.h3{font-size:1.17em}p{margin-top:0;margin-bottom:1rem}p.lead{font-size:1.25rem;font-weight:300;padding:0 1rem}ul,ol,dl{margin-top:0;margin-bottom:1rem}ul,ol{padding-left:1.25rem}hr{position:relative;margin:1.5rem 0;border:0;border-top:1px solid #eee}.hr{padding-bottom:.5rem;border-bottom:1px solid #eee;margin-bottom:1.5rem}h4,h5,h6,.h4,.h5,.h6{margin-bottom:0.5rem;font-size:1rem}table{margin-bottom:1rem;width:100%;width:calc(100% + 2rem);margin-left:-1rem;border:1px solid #e5e5e5;border-collapse:collapse;border-spacing:0}td,th{padding:.25rem .5rem;border:1px solid #e5e5e5}td:first-child,th:first-child{padding-left:1rem}td:last-child,th:last-child{padding-right:1rem}thead+tbody,tbody+tbody,tfoot{border-top:3px double #e5e5e5}tbody tr:nth-child(odd) td,tbody tr:nth-child(odd) th{background-color:#f9f9f9}footer{margin-bottom:2rem}.page,.post{margin-bottom:3em}.page li+li,.post li+li{margin-top:.25rem}.page>header,.post>header{margin-bottom:2rem}.page-title,.post-title{margin-top:0}.post-date{display:block;margin-top:-0.5rem;margin-bottom:1rem;color:#9a9a9a}.related-posts{padding-left:0;list-style:none}.related-posts>li,.related-posts>li+li{margin-top:1rem}.related-posts>li>small,.related-posts>li+li>small{font-size:75%;color:#9a9a9a}.message{margin-bottom:1rem;padding:1rem;color:#787878;background-color:#f9f9f9;margin-left:-1rem;margin-right:-1rem}body,main{position:relative;overflow-x:hidden}@media screen{body::before{content:'';width:.5rem;background:#e5e5e5;position:absolute;left:0;top:0;bottom:0}}@media screen and (min-width: 40em){html{font-size:17px}}@media screen and (min-width: 54em){html{font-size:16px}}@media screen and (min-width: 72em){html{font-size:17px}}@media screen and (min-width: 125em){html{font-size:18px}}.sr-only{display:none}.clearfix,.sidebar-social::after,.clearafter::after{content:"";display:table;clear:both}a,.a{position:relative;padding-bottom:.15rem;border-bottom:1px solid}.img{overflow:hidden;background-color:#f9f9f9}.img>img{margin:0;width:100%;height:100%}.sixteen-nine{position:relative}.sixteen-nine::before{display:block;content:"";width:100%;padding-top:56.25%}.sixteen-nine>*{position:absolute;top:0;left:0;right:0;bottom:0}h1+hr,h2+hr,h3+hr,h4+hr,h5+hr,h6+hr{margin-top:0}.fade-in{animation-duration:500ms;animation-name:fade-in;animation-fill-mode:forwards}@keyframes fade-in{from{transform:translateY(-2rem);opacity:0}50%{transform:translateY(-2rem);opacity:0}to{transform:translateY(0);opacity:1}}.mb6{margin-bottom:6rem}.sidebar{color:rgba(255,255,255,0.75);text-align:left}.sidebar::before{content:"";position:absolute;z-index:2;top:0;left:0;bottom:0;right:0;background:linear-gradient(to bottom, rgba(32,32,32,0) 0%, rgba(32,32,32,0.5) 100%)}.sidebar a{color:#fff;border-bottom-color:rgba(255,255,255,0.2)}#_yDrawer{position:relative;padding:1rem 0}@media screen{#_yDrawer{padding:2rem 1rem;min-height:640px;min-height:100vh}}@media screen and (min-width: 54em){#_yDrawer{position:fixed;top:0;left:0;bottom:0;width:18rem;margin-left:0}}@media screen and (min-width: 97.5em){#_yDrawer{width:calc(50% - 28rem)}}@media screen{#_yDrawer.loaded{min-height:0;padding:0}}.sidebar-bg{position:absolute;top:0;right:0;bottom:0;left:0;background:#202020 center / cover}.sidebar-sticky{position:relative;z-index:3}@media screen{.sidebar-sticky{position:absolute;right:2rem;bottom:1rem;left:2rem}}.sidebar-about>h1{color:#fff;font-size:2rem}.sidebar-nav>ul{list-style:none;padding-left:0;margin-bottom:.5rem}a.sidebar-nav-item{font-weight:bold;display:block;line-height:1.75;padding:.25rem 0;border-bottom:1px solid rgba(255,255,255,0.2)}@media screen{.y-drawer-scrim{z-index:2}.y-drawer-content{width:18rem;left:-17.5rem;z-index:3}}@media screen and (min-width: 97.5em){.y-drawer-content{width:calc(50% - 28rem)}}.sidebar-social{margin-bottom:.5rem}.sidebar-social>ul{list-style:none;padding-left:0;margin:0 -.25rem}.sidebar-social>ul>li{float:left;margin:0 .25rem}.sidebar-social>ul>li>a{display:inline-block;text-align:center;font-size:1.6rem;line-height:3rem;width:3.1249rem;height:4rem;padding:.5rem 0}.sidebar-social>ul li+li{margin-top:0}.fixed-top{position:fixed;top:0;left:0;width:100%;z-index:1}.navbar>.content{padding-top:0;padding-bottom:0;min-height:0;height:0}.menu{display:inline-block;padding:1.75rem 1.5rem;border-bottom:none;margin-left:-1.5rem;color:#9a9a9a !important}.menu::after{content:"\2630"}@media screen and (min-width: 54em){.menu{padding:1.25rem 1.5rem;position:absolute;left:-9999px}.menu:focus{position:static}}.animation-main{pointer-events:none}.loading{display:none}@media print{.menu{display:none}}.animation-main{opacity:0;will-change:opacity}.loading{position:absolute;top:0;right:0;padding:5.25rem 4.5rem;transform-origin:top right;transform:scale(0.33)}.content{position:relative;margin-left:auto;margin-right:auto;padding:5rem 1rem 12rem}@media screen{.content{max-width:38rem;padding-left:1.5rem;min-height:100vh}}@media screen and (min-width: 54em){.content{max-width:42rem;padding:4rem 1rem 12rem;margin-left:22rem;margin-right:4rem}}@media screen and (min-width: 72em){.content{margin-left:22rem;margin-right:4rem}}@media screen and (min-width: 92em){.content{max-width:48rem}}@media screen and (min-width: 97.5em){.content{margin:auto}}.me{float:right;width:6.5rem;height:6.5rem;margin-left:1rem;margin-bottom:.5rem;border-radius:100%;position:relative}@media screen and (min-width: 40em){.me{width:7rem;height:7rem}}@media screen and (min-width: 54em){.me{width:6.5rem;height:6.5rem}}@media screen and (min-width: 60em){.me{width:7rem;height:7rem}}main>footer{position:absolute;bottom:0;left:0;right:0;padding:0 1rem;color:#9a9a9a;font-size:smaller;text-align:center}main>footer>p{margin-bottom:0}html{font-family:Georgia, serif}h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6,.heading{font-family:Helvetica, Arial, sans-serif}
+
+</style>
+
+
+<link rel="preload" href="http://localhost:4000/assets/css/hydejack.css?v=6.4.0" as="style" onload="this.rel='stylesheet'">
+
+<style id="_pageStyle">
+
+.content a{color:#c4a071;border-color:rgba(196,160,113,0.2)}.content a:hover{border-color:#c4a071}:focus{outline-color:#c4a071}::selection{color:#fff;background:#c4a071}::-moz-selection{color:#fff;background:#c4a071}
+
+</style>
+
+
+<noscript>
+  <link rel="stylesheet" href="http://localhost:4000/assets/css/hydejack.css?v=6.4.0">
+
+  
+  
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:700|Noto+Serif:400,400i,700,700i">
+    <style>
+      html { font-family: 'Noto Serif', Georgia, serif }
+      h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .heading { font-family: 'Roboto Slab', Helvetica, Arial, sans-serif }
+    </style>
+  
+
+  
+  <link rel="stylesheet" href="http://localhost:4000/assets/icomoon/style.css">
+</noscript>
+<!--<![endif]-->
+
+</head>
+
+<body>
+  <!-- =============== -->
+<!-- MENU            -->
+<!-- =============== -->
+<div class="navbar fixed-top">
+  <div class="content">
+    <span class="sr-only">Jump to:</span>
+    <a id="_menu" class="menu no-hover" href="#_title">
+      <span class="sr-only">Menu</span>
+    </a>
+  </div>
+</div>
+
+<!-- =============== -->
+<!-- CONTENT         -->
+<!-- =============== -->
+<div id="_yPushState">
+  <div class="fade-in">
+    <main id="_main" class="content" role="main" data-color="#c4a071" data-image="/assets/img/agrigente.jpg">
+      
+
+<article id="post-2016/06/10/massive-matrix-factorization-for-fMRI-and-recommender-systems" class="post" role="article">
+  <header>
+    <h1 class="post-title">
+      
+        Massive Matrix Factorization for fMRI and Recommender Systems
+      
+    </h1>
+
+    <p class="post-date heading">
+      <time datetime="2016-06-10T10:19:34+02:00">10 Jun 2016</time>
+      
+
+
+
+
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+on <span>Optimization</span>, <span>Matrix factorization</span>
+
+    </p>
+
+    
+  <div class="hr" style="padding-bottom:0"></div>
+
+
+  </header>
+
+  
+    <p>Before presenting it at ICML New York, I will give a quick overview of our work on efficient
+matrix factorization for very large datasets. Our focus was to scale <em>matrix
+factorization</em> techniques for functional MRI, a domain where data to
+decompose is now at terabyte scale. Along the way, we also designed a encouraging proof-of-concept
+experiment for collaborative filtering.</p>
+
+<p>We’ll start by reviewing matrix factorization techniques for interpretable data
+decomposition.</p>
+
+<h2 id="understanding-data-with-matrix-factorization">Understanding data with matrix factorization</h2>
+
+<p>Unsupervised learning aim at finding patterns in a sequence of n samples
+<code class="MathJax_Preview">(x_t)t</code><script type="math/tex">(x_t)t</script>, living in a <code class="MathJax_Preview">p</code><script type="math/tex">p</script> dimensional space. Typically, this involve finding a few statistics that describe data in a <em>compressed</em> manner. Our dataset can be seen as a large matrix <code class="MathJax_Preview">X \in R^{n \times p}</code><script type="math/tex">X \in R^{n \times p}</script>. Factorizing such matrix has proven a very flexible manner to extract interesting pattern. Namely, we want to find two <em>small</em> matrices <code class="MathJax_Preview">D</code><script type="math/tex">D</script> (the <em>dictionary</em>) and <code class="MathJax_Preview">A</code><script type="math/tex">A</script> (the <em>code</em>) with <code class="MathJax_Preview">k</code><script type="math/tex">k</script> columns/rows whose product approximates <code class="MathJax_Preview">X</code><script type="math/tex">X</script></p>
+
+<p><img src="/assets/img/16-mmf/drawings/poster_model_sparse.png" width="80%" style="display: block; margin: 0 auto;" title="Model" /></p>
+
+<p>Small can mean several things here : we may impose <code class="MathJax_Preview">k</code><script type="math/tex">k</script> to be small, which amounts to search for a low rank representation of the matrix <code class="MathJax_Preview">X</code><script type="math/tex">X</script>, and thus a subspace of <code class="MathJax_Preview">RR^p</code><script type="math/tex">RR^p</script> that approximately include all samples. For interpretability, it can be useful, as in the drawing above, to impose sparsity on <code class="MathJax_Preview">D</code><script type="math/tex">D</script> – this is what we’ll do in fMRI.</p>
+
+<p>In other settings, we may have <code class="MathJax_Preview">k</code><script type="math/tex">k</script> large but impose <code class="MathJax_Preview">A</code><script type="math/tex">A</script> <em>sparse</em>, leading to an overcomplete dictionary learning setting, that generalize the k-means algorithm. This setting won’t interest us today, although we use its terminology.</p>
+
+<h3 id="fmri-example">fMRI example</h3>
+
+<p>We can already instantiate matrix factorization for fMRI as this will make things clearer. We study resting-state functional imaging : 500 subjects go four times in a scanner, to get their brain activity recorded during 15 minutes while at rest – roughly, a 3D image of their brain activity is acquired every second. This yields 2 millions 3D images of brain activity, each of them with 200 000 <em>voxels</em> – <strong>2TB</strong> of dense data. We want to extract spatial activity maps that constitute a good basis for these images:</p>
+
+<p><img src="/assets/img/16-mmf/drawings/poster_fmri_dl_flat.png" width="80%" style="display: block; margin: 0 auto;" title="Model" /></p>
+
+<p>What we are most interested in is the dictionary <code class="MathJax_Preview">D</code><script type="math/tex">D</script>, that holds, say, 70 sparse spatial maps. We expect those to capture functional networks, segmenting the auditory, visual, motor cortex, etc. Sparsity and low-rank are key for pattern discovery: we want to find few maps, with few activated regions.</p>
+
+<h2 id="matrix-factorization-for-large-datasets">Matrix factorization for large datasets</h2>
+
+<p>A little math should be introduced to better grasp our problem. Decomposing <code class="MathJax_Preview">X</code><script type="math/tex">X</script> into the product <code class="MathJax_Preview">D A</code><script type="math/tex">D A</script> can be done by solving an optimization problem (see <strong>[Olshausen ‘97]</strong> for the initial problem setting):</p>
+
+<pre class="MathJax_Preview"><code>\min_{D \in \mathcal{C}, A \in R^{k\times p}} \Vert X - D A \Vert_2^2 + \lambda \Omega(\alpha)</code></pre>
+<script type="math/tex; mode=display">\min_{D \in \mathcal{C}, A \in R^{k\times p}} \Vert X - D A \Vert_2^2 + \lambda \Omega(\alpha)</script>
+
+<p>where structure and sparsity can be imposed via constraints (convex set <code class="MathJax_Preview">\mathcal{C}</code><script type="math/tex">\mathcal{C}</script>)
+and penalties. For example, we may impose dictionary columns to live in <code class="MathJax_Preview">\ell_1</code><script type="math/tex">\ell_1</script> balls, to get a sparse dictionary.</p>
+
+<p>Solving this minimization problem is where all the honey is : let’s see what methods can be used when <code class="MathJax_Preview">X</code><script type="math/tex">X</script> grows large.</p>
+
+<p>A naive solver alternatively minimize the loss function over <code class="MathJax_Preview">A</code><script type="math/tex">A</script> and <code class="MathJax_Preview">D</code><script type="math/tex">D</script>. Meaning, given <code class="MathJax_Preview">X</code><script type="math/tex">X</script> and <code class="MathJax_Preview">A</code><script type="math/tex">A</script>, find the best <code class="MathJax_Preview">D</code><script type="math/tex">D</script>, given <code class="MathJax_Preview">X</code><script type="math/tex">X</script> and <code class="MathJax_Preview">D</code><script type="math/tex">D</script>, find the best <code class="MathJax_Preview">A</code><script type="math/tex">A</script>, and repeat. If we look at it from a dictionary oriented point of view, we define
+<code class="MathJax_Preview">A(D) = \text{arg}\,\min_{A \in R^{k \times n}} \Vert X - D A \Vert_F^2  + \lambda \Omega(A)</code><script type="math/tex">A(D) = \text{arg}\,\min_{A \in R^{k \times n}} \Vert X - D A \Vert_F^2  + \lambda \Omega(A)</script></p>
+
+<pre class="MathJax_Preview"><code>\alpha_i(D) = \text{arg}\,\min_{A \in R^{k \times n}} \Vert x_i - D \alpha_i \Vert_F^2  + \lambda \Omega(\alpha_i)</code></pre>
+<script type="math/tex; mode=display">\alpha_i(D) = \text{arg}\,\min_{A \in R^{k \times n}} \Vert x_i - D \alpha_i \Vert_F^2  + \lambda \Omega(\alpha_i)</script>
+
+<p>where the second equality has used the colummns <code class="MathJax_Preview">(\alpha_i)</code><script type="math/tex">(\alpha_i)</script> of <code class="MathJax_Preview">A</code><script type="math/tex">A</script> – we’ll see why in a minute. The naive algorithm simply consist in doing</p>
+
+<pre class="MathJax_Preview"><code>\begin{aligned}
+D_t &amp;= \text{arg}\,\min_{D \in \mathcal{C}} \Vert X - D A(D_{t-1}) \Vert_F^2 \\
+&amp;= \min_{D} \sum_{i=1}^n \Vert x_i - D \alpha_i(D_{n-1})) \Vert_F^2
+\end{aligned}</code></pre>
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{aligned}
+D_t &= \text{arg}\,\min_{D \in \mathcal{C}} \Vert X - D A(D_{t-1}) \Vert_F^2 \\
+&= \min_{D} \sum_{i=1}^n \Vert x_i - D \alpha_i(D_{n-1})) \Vert_F^2
+\end{aligned} %]]></script>
+
+<p>This takes time, as the whole data <code class="MathJax_Preview">X</code><script type="math/tex">X</script> is loaded at each iteration. In fact, it quickly becomes intractable: beyond 1 million entry in <code class="MathJax_Preview">X</code><script type="math/tex">X</script>, it already takes hours.</p>
+
+<h3 id="going-online">Going online</h3>
+
+<p>A very efficient way to get past this intractability was introduced by <strong>[Mairal ‘10]</strong>. Computing <code class="MathJax_Preview">A</code><script type="math/tex">A</script> for the whole dataset is costly, and overkill for a single step of improving the dictionary: we can maintain an approximation of this code by streaming the data and optimizing the dictionary along the stream.</p>
+
+<p><img src="/assets/img/16-mmf/drawings/poster_model_sparse_online.png" width="80%" style="display: block; margin: 0 auto;" title="Model" /></p>
+
+<p>As the drawing above indicates, we look at data sample <code class="MathJax_Preview">x_t</code><script type="math/tex">x_t</script> after
+sample. At iteration <code class="MathJax_Preview">t</code><script type="math/tex">t</script>t, we use the current dictionary to compute the associated loadings
+<code class="MathJax_Preview">\alpha_t</code><script type="math/tex">\alpha_t</script>:</p>
+
+<pre class="MathJax_Preview"><code>\alpha_t(D) = \text{arg}\,\min_{A \in R^{k \times n}} \Vert x_t - D_{t-1} \alpha_t \Vert_F^2  + \lambda \Omega(\alpha_t)</code></pre>
+<script type="math/tex; mode=display">\alpha_t(D) = \text{arg}\,\min_{A \in R^{k \times n}} \Vert x_t - D_{t-1} \alpha_t \Vert_F^2  + \lambda \Omega(\alpha_t)</script>
+
+<p>We then solve, at each iteration</p>
+
+<pre class="MathJax_Preview"><code>D_t = \text{arg}\,\min_{D \in \mathcal{C}} \sum_{i=1}^t \Vert x_i - D \alpha_i \Vert_F^2</code></pre>
+<script type="math/tex; mode=display">D_t = \text{arg}\,\min_{D \in \mathcal{C}} \sum_{i=1}^t \Vert x_i - D \alpha_i \Vert_F^2</script>
+
+<p>This look very much like the original update, except we use outdated
+<code class="MathJax_Preview">\alpha_t</code><script type="math/tex">\alpha_t</script> to approximate our objective function. The essential idea here is
+start solving the problem with a very inaccurate approximation of it, and
+improve it by looking at more data.</p>
+
+<p>A single iteration of the algorithm depend on <code class="MathJax_Preview">p</code><script type="math/tex">p</script> but no longer on <code class="MathJax_Preview">n</code><script type="math/tex">n</script>, and the
+algorithm empirically converges in a few epochs on data. This is very efficient
+when data dimension <code class="MathJax_Preview">p</code><script type="math/tex">p</script> is reasonable – as a matter of fact the online algorithm
+was initially designed to handle large sequences of 16x16 image patches – <strong>a
+very low p compared to fMRI setting</strong>.</p>
+
+<h2 id="handling-large-sample-dimension">Handling large sample dimension</h2>
+
+<p>This is where our contribution begins. We want to provide an algorithm that
+ scales not only in the number of samples but also in the sample dimension. To
+ scale in the number of samples, we went from using <code class="MathJax_Preview">X</code><script type="math/tex">X</script> to using <code class="MathJax_Preview">x_t</code><script type="math/tex">x_t</script> at
+ each iteration, allowing around n time faster iterations. Here, <code class="MathJax_Preview">x_t</code><script type="math/tex">x_t</script> is
+ still too large, and <strong>we want to acquire information even faster</strong>.</p>
+
+<p>This is where we introduce <em>random subsampling</em>: can we improve the dictionary
+with only a <em>fraction</em> of a sample at each iteration. The answer is yes, as we’ll
+now show.  The algorithm we propose loads a fraction of a sample <code class="MathJax_Preview">x_t</code><script type="math/tex">x_t</script> at each
+iteration and use it to update the approximation of the optimization problem.
+The fraction is different at each iteration: this way, we are able to obtain
+information about the whole feature space, in a stochastic manner. We go a step
+beyond in randomness:</p>
+
+<p><img src="/assets/img/16-mmf/drawings/poster_next_level.png" alt="Random subsampling" /></p>
+
+<p><code class="MathJax_Preview">M_t x_t</code><script type="math/tex">M_t x_t</script> corresponds to a subsampling of <code class="MathJax_Preview">x_t</code><script type="math/tex">x_t</script>, choosing <code class="MathJax_Preview">M_t</code><script type="math/tex">M_t</script> to be a <code class="MathJax_Preview">[0, 1]</code><script type="math/tex">[0, 1]</script> diagonal matrix with, say, 90% zeros.</p>
+
+<p>The whole difficulty lies in constructing the right approximations so that the
+problem we solve at each iteration looks more and more like the original
+optimization problem – just like the online algorithm does.</p>
+
+<p>The online algorithm relies on a few low dimensional statistics that
+ sufficiently describe the approximate problem. These are updated in a
+ <code class="MathJax_Preview">\mathcal{O}(p)</code><script type="math/tex">\mathcal{O}(p)</script> cost – ensuring scalable single iteration, and hence the online magic.</p>
+
+<p>Our objective here is to speed up iteration of a constant factor, that
+corresponds to the factor of dimension reduction. We must therefore ensure that
+everything we do at iteration t scales in <code class="MathJax_Preview">\mathcal{O}(s)</code><script type="math/tex">\mathcal{O}(s)</script>, where <code class="MathJax_Preview">s</code><script type="math/tex">s</script> is the <em>reduced</em> dimension.
+That way, we gain a constant factor (from 2 to 12 on large datasets, as we’ll
+see) on single iteration complexity (<em>computational speed-up</em>), and we expect not to
+loose it because of the approximation we introduce (<em>approximation errance</em>).</p>
+
+<p>This is because <strong>very large datasets have often many redundancies</strong>, accessing
+a stochastic part of sample does not reduce much the information acquired at
+each iteration.  As we’ll see, on large datasets, the balance is therefore very
+much on the side of single iteration computational speed-up.</p>
+
+<p>The constraint we introduce on iteration complexity restrains much what we are able to do. To sum up, we have to adapt the three steps of the online algorithm</p>
+<ul>
+  <li>Computing the code from past iterate : we rely on a <em>sketched</em> version of code computation, where we only look at <code class="MathJax_Preview">M_t</code><script type="math/tex">M_t</script> features of <code class="MathJax_Preview">x_t</code><script type="math/tex">x_t</script> and <code class="MathJax_Preview">D_{t-1}</code><script type="math/tex">D_{t-1}</script></li>
+</ul>
+
+<pre class="MathJax_Preview"><code>\begin{aligned}\alpha_t(D) &amp;= \text{arg}\,\min_{A \in R^{k \times n}} \Vert M_t(x_t - D_{t-1} \alpha_t) \Vert_F^2 + \lambda \frac{s}{p} \Omega(\alpha)
+\end{aligned}</code></pre>
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{aligned}\alpha_t(D) &= \text{arg}\,\min_{A \in R^{k \times n}} \Vert M_t(x_t - D_{t-1} \alpha_t) \Vert_F^2 + \lambda \frac{s}{p} \Omega(\alpha)
+\end{aligned} %]]></script>
+
+<ul>
+  <li>
+    <p>Aggregating this partial sample and code in an approximative objective, as we do by summing <code class="MathJax_Preview">t</code><script type="math/tex">t</script> factors in the online algorithm. We have to do this in a clever manner so that we only update statistics of size in s and not in p. This includes keeping tracks of the number of time we saw a feature in the past.</p>
+  </li>
+  <li>
+    <p>Updating the dictionary: we can’t update the full <code class="MathJax_Preview">D</code><script type="math/tex">D</script> at each iteration as this is <code class="MathJax_Preview">\mathcal{O}(p)</code><script type="math/tex">\mathcal{O}(p)</script> costly. It makes sense to update the features of the dictionary atoms that were seen in <code class="MathJax_Preview">M_t</code><script type="math/tex">M_t</script>, ensuring that <code class="MathJax_Preview">D</code><script type="math/tex">D</script> remains in <code class="MathJax_Preview">\mathcal{C}</code><script type="math/tex">\mathcal{C}</script> by projection.</p>
+  </li>
+</ul>
+
+<p>I skipped the math in the two last parts, but you can access it in more detail <a href="docs/presentations/icml_presentation.pdf">on these slides</a>. You will also find a detailed comparison between our algorithm and the original online algorithm.</p>
+
+<h2 id="results">Results</h2>
+
+<p>Let’s get to the most important part: do we get desired speed-up, is the dictionary
+we compute as good as those we would obtain with previous algorithms ?</p>
+
+<p><strong>On fMRI, we can push the reduction up to x12 and obtain x10 speed-up compared to the online algorithm</strong>. Remember that a single pass on the data would take 235h using the online algorithm. We’ll use the obtained maps as a baseline. Maps are blobish, with noiseless contours.</p>
+
+<p>In no more than 10h, our algorithm, using a 12-fold reduction, is able to recover maps that are almost as epxloitable as the baseline one. In comparison, the original algorithm stopped after 10h yields very poor results: noisy maps with many blobs.</p>
+
+<p>Displaying the contour of these maps makes it clearly appear:</p>
+
+<p><img src="/assets/img/16-mmf/figures/brains.png" alt="Brains" /></p>
+
+<p>We can quantify the speed-up we obtain by looking at convergence curve, that decribe how good the dictionary perform as a basis on a test set, against time spent in computation.</p>
+
+<p><img src="/assets/img/16-mmf/figures/bench.png" width="70%" style="display: block; margin: 0 auto;" title="Bench" /></p>
+
+<p><strong>Convergence is obtained x10 more quickly</strong> with a 12 times reduction.
+This is very valuable for practioners ! Information is indeed acqired faster,
+as the speed-up we obtained is close to the reduction we imposed.</p>
+
+<h2 id="collaborative-filtering">Collaborative filtering</h2>
+
+<p>Our setting imposes masks on data to speed up learning. Quite interestingly,
+collaborative filtering brings us a setting where we can only acces <em>masked</em>
+data, that corresponds to, for example, the few movies that a user has rated.
+Matrix factorization is there used to reconstructe the incomplete matrix <code class="MathJax_Preview">X</code><script type="math/tex">X</script> (see, for instance <strong>[Szabo ‘11’]</strong>).
+To evaluate the performance of our model, we look at rating prediction on a
+test set. We compare our algorithm with a fast coordiate descent solver from
+<a href="http://github.com/mathieublondel/spira">spira</a>, that does not involve setting any
+hyperparmeter – our algorithm is, unlike SGD, not very dependant on
+hyperparameters. We get good results on large datasets (Netflix,
+Movielens 10M), as these benches show. On <strong>Netflix</strong>, our algorithm is <strong>7x faster</strong> than the coordinate descent solver, which was the fastest well-packaged collaborative filtering algorithm we could find.</p>
+
+<p><img src="/assets/img/16-mmf/figures/rec_bench.png" width="100%" style="display: block; margin: 0 auto;" title="Collaborative filtering benches" /></p>
+
+<p>Our model is very simple (minimization of an <code class="MathJax_Preview">\ell_2</code><script type="math/tex">\ell_2</script> loss), and we do not get
+state of the art prediction on Netflix. However, this experiment shows that our
+algorithm is able to learn a decomposition even with non random masks, and
+demonstrate the efficiency of imposing the complexity constraints explained
+above.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Leveraging random subsampling with online learning is thus a very efficient manner to perform matrix factorization on datasets large in both direction. Our algorithm had no convergence guarantee at the time of contribution (February), but we now have a slightly adapted algorithm that converges with the same guarantee as in the original online matrix factorization paper – we rely on the stochastic majorization minimization framework <strong>[Mairal ‘13]</strong>.</p>
+
+<p><a href="http://github.com/arthurmensch/modl">A Python package</a> is available for reproducibility. We hope to integrate this algorithm in more well-known library in the long term.</p>
+
+<p>I hope that this post was readable enough and has interested you. You’ll find
+more details in our <a href="https://hal.archives-ouvertes.fr/hal-01308934">paper</a>,
+<a href="/docs/posters/icml_poster.pdf">poster</a> and <a href="/docs/presentations/icml_presentation.pdf">slides</a>. I
+will present this work in ICML New York Monday June 20th at 11h45. Discussions are
+welcome !</p>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li>
+    <p><strong>[Mairal ‘10]</strong> Mairal, Julien, Francis Bach, Jean Ponce, and Guillermo Sapiro. “Online Learning for Matrix Factorization and Sparse Coding.” The Journal of Machine Learning Research, 2010.</p>
+  </li>
+  <li>
+    <p><strong>[Mairal ‘13]</strong> Mairal, Julien. “Stochastic Majorization-\minimization Algorithms for Large-Scale Optimization.” In Advances in Neural Information Processing Systems, 2013.</p>
+  </li>
+  <li>
+    <p><strong>[Olshausen ‘97]</strong> Olshausen, Bruno A., and David J. Field. “Sparse Coding with an Overcomplete Basis Set: A Strategy Employed by V1?” Vision Research, 1997.</p>
+  </li>
+  <li>
+    <p><strong>[Szabo ‘11]</strong> Szabó, Zoltán, Barnabás Póczos, and András Lorincz. “Online Group-Structured Dictionary Learning.” In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, 2011.</p>
+  </li>
+  <li>
+    <p>See also <a href="/docs/presentations/icml_presentation.pdf">these slides</a></p>
+  </li>
+</ul>
+
+  
+
+</article>
+
+
+  <hr class="dingbat" />
+
+
+
+
+
+
+  <aside class="author" role="complementary">
+    <div class="author">
+  
+    
+  
+
+  
+
+  <img
+    src="/assets/img/amensch.jpg"
+    class="me"
+    alt="Arthur Mensch"
+    
+    
+  />
+
+
+  
+
+  <h2 class="page-title hr">
+    About
+  </h2>
+
+  <p>I am a Ph.D. candidate at Inria Parietal group since September 2015. I am interested in optimization methods, and especially matrix factorization techniques, for very large datasets such as those produced by functional Magnetic Reasonance Imaging (fMRI).</p>
+
+<p>I am working under the supervision of <a href="http://gael-varoquaux.info">Gaël Varoquaux</a>, <a href="http://lear.inrialpes.fr/people/mairal/">Julien Mairal</a> and <a href="https://team.inria.fr/parietal/team-members/bertrand-thirions-page/">Bertrand Thirion</a>. I obtained a graduate degree at École Polytechnique, and a Master of Science in applied mathematics and machine learning at Télécom ParisTech and École Normale Supérieure de Cachan, in France.</p>
+
+
+  
+    <div class="sidebar-social">
+      <span class="sr-only">Social:</span>
+<ul>
+  
+    
+
+
+
+
+
+
+
+
+
+<li>
+  <a href="https://twitter.com/arthurmensch">
+    <span class="icon-twitter" title="Twitter"></span>
+    <span class="sr-only">Twitter</span>
+  </a>
+</li>
+
+  
+    
+
+
+
+
+
+
+
+
+
+<li>
+  <a href="https://github.com/arthurmensch">
+    <span class="icon-github" title="GitHub"></span>
+    <span class="sr-only">GitHub</span>
+  </a>
+</li>
+
+  
+    
+
+
+
+
+
+
+
+
+
+<li>
+  <a href="mailto:arthur.mensch@m4x.org">
+    <span class="icon-mail" title="Email"></span>
+    <span class="sr-only">Email</span>
+  </a>
+</li>
+
+  
+    
+
+
+
+
+
+
+
+
+
+<li>
+  <a href="https://amensch.fr/feed.xml">
+    <span class="icon-rss2" title="RSS"></span>
+    <span class="sr-only">RSS</span>
+  </a>
+</li>
+
+  
+</ul>
+
+    </div>
+  
+</div>
+
+  </aside>
+
+
+
+
+
+<aside class="related" role="complementary">
+  <h2 class="hr">Related Posts</h2>
+
+  <ul class="related-posts">
+    
+      
+      
+      
+        
+          
+          
+    
+  </ul>
+</aside>
+
+
+
+      
+
+      <footer>
+  <hr/>
+  
+    <p>Arthur Mensch © 2017. All rights reserved.</p>
+
+  
+</footer>
+
+    </main>
+  </div>
+  <div id="_yDrawer">
+  <div id="_sidebar" class="sidebar">
+    <div class="sidebar-bg" style="background-color:#c4a071;background-image:url(/assets/img/agrigente.jpg)"></div>
+    <header class="sidebar-sticky" role="banner">
+      <div class="sidebar-about">
+        <h1><a id="_title" href="/">Arthur Mensch</a></h1>
+        <p>Machine learning / Neuro-imaging / Optimization</p>
+
+      </div>
+
+      <nav class="sidebar-nav heading" role="navigation">
+        <span class="sr-only">Navigation:</span>
+<ul>
+  
+
+  
+
+  
+
+  
+    <li>
+      <a class="sidebar-nav-item" href="/">About</a>
+    </li>
+  
+    <li>
+      <a class="sidebar-nav-item" href="/posts/">Posts</a>
+    </li>
+  
+    <li>
+      <a class="sidebar-nav-item" href="/research/">Research</a>
+    </li>
+  
+    <li>
+      <a class="sidebar-nav-item" href="/software/">Software</a>
+    </li>
+  
+    <li>
+      <a class="sidebar-nav-item" href="/teaching/">Teaching</a>
+    </li>
+  
+</ul>
+
+      </nav>
+
+      
+      
+        <div class="sidebar-social">
+          <span class="sr-only">Social:</span>
+<ul>
+  
+    
+
+
+
+
+
+
+
+
+
+<li>
+  <a href="https://twitter.com/arthurmensch">
+    <span class="icon-twitter" title="Twitter"></span>
+    <span class="sr-only">Twitter</span>
+  </a>
+</li>
+
+  
+    
+
+
+
+
+
+
+
+
+
+<li>
+  <a href="https://github.com/arthurmensch">
+    <span class="icon-github" title="GitHub"></span>
+    <span class="sr-only">GitHub</span>
+  </a>
+</li>
+
+  
+    
+
+
+
+
+
+
+
+
+
+<li>
+  <a href="mailto:arthur.mensch@m4x.org">
+    <span class="icon-mail" title="Email"></span>
+    <span class="sr-only">Email</span>
+  </a>
+</li>
+
+  
+    
+
+
+
+
+
+
+
+
+
+<li>
+  <a href="https://amensch.fr/feed.xml">
+    <span class="icon-rss2" title="RSS"></span>
+    <span class="sr-only">RSS</span>
+  </a>
+</li>
+
+  
+</ul>
+
+        </div>
+      
+    </header>
+  </div>
+</div>
+
+</div>
+
+<!-- =============== -->
+<!-- SCRIPTS         -->
+<!-- =============== -->
+
+<script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', '<UA-79657005-1>', 'auto');
+  ga('send', 'pageview');
+  loadJSDeferred('https://www.google-analytics.com/analytics.js');
+</script>
+
+
+
+
+
+<!--[if gt IE 8]><!---->
+<script>
+  WebFontConfig = {
+    
+    google: {
+      families: 'Roboto+Slab:700|Noto+Serif:400,400i,700,700i'.split('|')
+    },
+    
+
+    custom: {
+      families: ['icomoon'],
+      urls: ['/assets/icomoon/style.css']
+    }
+  };
+  loadJSDeferred('https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
+</script>
+<!--<![endif]-->
+
+
+  <!--[if gt IE 9]><!---->
+  
+  <script>loadJSDeferred('/assets/js/hydejack.js?v=6.4.0');</script>
+
+  
+  <!--<![endif]-->
+
+
+
+</body>
+
+</html>
