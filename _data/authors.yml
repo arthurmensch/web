@@ -8,9 +8,11 @@ amensch:
   # Used at the bottom of each page and at the top of the `about` layout
   # Markdown enabled, can use multiple paragraphs (enabled by `|`)
   about:             |
-                     I am a Ph.D. candidate at Inria Parietal group since September 2015. I am interested in optimization methods, and especially matrix factorization techniques, for very large datasets such as those produced by functional Magnetic Reasonance Imaging (fMRI).
+                     I am a Ph.D. candidate in Inria Parietal team since September 2015. I am interested in optimization methods, and especially matrix factorization techniques, for very large datasets such as those produced by functional Magnetic Reasonance Imaging (fMRI).
 
                      I am working under the supervision of [Gaël Varoquaux](http://gael-varoquaux.info), [Julien Mairal](http://lear.inrialpes.fr/people/mairal/) and [Bertrand Thirion](https://team.inria.fr/parietal/team-members/bertrand-thirions-page/). I obtained a graduate degree at École Polytechnique, and a Master of Science in applied mathematics and machine learning at Télécom ParisTech and École Normale Supérieure de Cachan, in France.
+
+                     My detailed resume can be found [here](docs/cv_eng.pdf)
 
 
   # This photo will be used in the about section
