@@ -6,9 +6,11 @@ menu: true
 order: 5
 ---
 
+# 2017
+
 ## Deep learning (M2 Data Science - Polytechnique / Paris-Saclay)
 
-- [Slides + Labs](https://github.com/m2dsupsdlclass/lectures-labs) of the course that I TAed.
+- [Slides + Labs](https://github.com/m2dsupsdlclass/lectures-labs) of the course I was a TA for.
 - I gave a [three notebook tutorial](https://github.com/m2dsupsdlclass/lectures-labs/tree/master/labs/08_frameworks) on [Pytorch](pytorch.org).
 
 ## Numerical analysis (ENSAE 1A)
