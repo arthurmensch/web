@@ -1,7 +1,7 @@
 update:
 	git add -A .
 	git commit -am 'update'
-	bundle exec jekyll serve
+	bundle exec jekyll build
 	cd _site
 	git add -A .
 	git commit -am 'update
