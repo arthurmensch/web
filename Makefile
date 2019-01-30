@@ -1,3 +1,4 @@
+.ONESHELL:
 update:
 	git add -A .
 	git commit -am 'update'
