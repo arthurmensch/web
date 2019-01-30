@@ -14,10 +14,14 @@ order: 2
 ## Oral presentations
 
 - Differentiable Dynamic Programming for Structured Prediction and Attention [Paper](https://arxiv.org/abs/1802.03676)
-  - July 2018: ICML (Stockholm, Sweden) [Slides]({{'docs/presentations/diff_dp_icml.pdf' | absolute_url }}), video to appear
+  - January 2019: Google (Zürich, Switzerland) [Slides]({{'docs/presentations/diff_dp_extended.pdf' | absolute_url }})
+  - July 2018: ICML (Stockholm, Sweden) [Slides]({{'docs/presentations/diff_dp_icml.pdf' | absolute_url }})
   - April 2018: Facebook Artificial Intelligence Research (Paris, France) [Slides]({{'docs/presentations/diff_dp.pdf' | absolute_url }})
   - March 2018: Deep Learning Meetup (Paris, France) [Slides]({{'docs/presentations/diff_dp.pdf' | absolute_url }})
 
+- Learning representations from functional MRI Data [Thesis](https://tel.archives-ouvertes.fr/tel-01891633/document)
+    - November 2018: Laplace Seminar, ENS, Paris, hosted by Nicolas Keriven [Slides]({{'docs/presentations/thesis.pdf' | absolute_url}})
+    - September 2018: PhD defense [Slides]({{'docs/presentations/thesis.pdf' | absolute_url}})
 
 - Stochastic Subsampling for Factorizing Huge Matrices [Paper](https://hal.archives-ouvertes.fr/hal-01431618)
   - July 2018: ISMP 2018 (Bordeaux, France), invited by Robert Gower [Slides]({{'docs/presentations/ismp_presentation.pdf' | absolute_url }})
