@@ -117,6 +117,8 @@ keep_files:
   - data
   - docs
 
+destination: dist
+
 kramdown:
   footnote_backlink: '&#x21a9;&#xfe0e;'
   math_engine:       mathjax

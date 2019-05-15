@@ -4,7 +4,7 @@ title: Home
 menu: true
 order: 1
 ---
-
+- **13/05/19** Our ICML 2019 paper *Geometric Losses for Distributional Learning* (joint work with Mathieu Blondel and Gabriel Peyré) is [available](https://hal.archives-ouvertes.fr/hal-02129281v1)
 - **28/01/19** [Slides]({{'docs/presentations/diff_dp_extended.pdf' | absolute_url}}) for an extended presentation of *Differentiable Dynamic Programming for Stuctured Prediction and Attention* [Paper](https://arxiv.org/abs/1802.03676)
 - **11/01/18** Started working as a post-doct with Gabriel Peyré, in ENS, Paris
 - **10/25/18** [Preprint](https://arxiv.org/pdf/1809.06035.pdf) of our work *Extracting Universal Representations of
