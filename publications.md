@@ -1,13 +1,11 @@
 ---
+encoding: utf8
 layout: page
 title: Research
 permalink: /research/
 menu: true
 order: 2
 ---
-## Papers
-
-[Google Scholar](https://scholar.google.fr/citations?user=F8riAN8AAAAJ&hl=fr)
 
 {% bibliography %}
 

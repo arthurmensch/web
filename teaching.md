@@ -3,7 +3,7 @@ layout: page
 title: Teaching
 permalink: /teaching/
 menu: true
-order: 5
+order: 4
 ---
 
 # 2017

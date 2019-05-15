@@ -43,24 +43,24 @@ google_fonts:        Roboto+Slab:700|Noto+Serif:400,400i,700,700i
 # To remove Google Anaylics from your page, remove the line below.
 google_analytics:      UA-79657005-1
 
+theme: jekyll-theme-hydejack
+
 
 # Setting a disqus shortname will enable the comment section on pages with `comments: true` in the front matter
 disqus_shortname:    amensch
 
 # This text will appear in the footer of every page. Markdown enabled.
-copyright:           'Arthur Mensch &copy; 2017. All rights reserved.'
+copyright:           'Arthur Mensch &copy; 2019. All rights reserved.'
 
 # Format of the permalinks
 permalink:           pretty
 
+
+
+
 # Pagination configuration (used by the `blog` layout)
 # paginate:            5
 # paginate_path:       '/posts/page-:num/'
-
-# If you are upgrading form a v5 verison of Hydejack, uncomment the two lines below,
-# so that the location of the feed XML stays the same.
-# feed:
-#   path:              atom.xml
 
 # Set to true when building with the `--lsi` option
 # See: https://jekyllrb.com/docs/variables/#site-variables
@@ -94,7 +94,7 @@ collections:
 #  Advanced configuration
 # -----------------------------------------------------------------------------
 
-gems:
+plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-paginate

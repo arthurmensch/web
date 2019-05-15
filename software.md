@@ -3,7 +3,7 @@ layout: page
 title: Software
 permalink: /software/
 menu: true
-order: 4
+order: 3
 ---
 I maintain [modl](https://arthurmensch.github.io/modl), a package that proposes fast algorithms for sparse and dense matrix factorization, with a scikit-learn compatible API.
 
