@@ -111,6 +111,10 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - Makefile
+  - data
+
+keep_files:
+  - data
 
 kramdown:
   footnote_backlink: '&#x21a9;&#xfe0e;'
