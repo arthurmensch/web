@@ -115,6 +115,7 @@ exclude:
 
 keep_files:
   - data
+  - docs
 
 kramdown:
   footnote_backlink: '&#x21a9;&#xfe0e;'
