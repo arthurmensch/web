@@ -1,5 +1,7 @@
 # Ignore docs files
 dist
+data
+docs
 _drafts
 .ruby-version
 
