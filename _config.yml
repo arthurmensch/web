@@ -13,18 +13,18 @@ url:                 https://amensch.fr
 baseurl:             ''
 
 # A very short description of your page
-tagline:             Machine learning / Neuro-imaging / Optimization
+tagline:             Machine learning / Optimization /  Neuro-imaging
 
 # A short description of the page, used in the sidebar and as fallback for the meta description tag.
 # Markdown enabled, but don't use more than one paragraph (enforced by `>`)
-description:         Machine learning / Neuro-imaging / Optimization
+description:         Machine learning / Optimization /  Neuro-imaging
 
 # This should be the same author as first entry in `_data/authors.yml`
 author:              amensch
 
 # Fallback image and color
-image:               /assets/img/agrigente.jpg
-color:               '#c4a071'
+accent_image:               /assets/img/agrigente-hr.jpg
+accent_color:               '#c4a071'
 
 # The font used for headings. Expects a string that is a valid CSS font-family value.
 font_heading:        "'Roboto Slab', Helvetica, Arial, sans-serif"
@@ -111,12 +111,12 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - Makefile
-  - data
 
 keep_files:
   - data
   - docs
-
+  - .git
+  - .gitignore
 destination: dist
 
 kramdown:

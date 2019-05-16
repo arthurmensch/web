@@ -9,13 +9,13 @@ amensch:
   # Markdown enabled, can use multiple paragraphs (enabled by `|`)
   about:             |
                      I am a post-doctoral research at École Normale Supérieure, Paris, in the laboratory of [Gabriel Peyré](https://gpeyre.com).
-                     I hold a Ph.D. in machine learning, that I prepared in Inria Parietal, from September 2015 to September 2018. 
+                     I hold a Ph.D. in machine learning, prepared in [Inria Parietal](https://team.inria.fr/parietal/) team, from 2015 to 2018. 
+
+                     I am currently working in structured prediction, optimal transport and game theory.
                      
-                     I am interested in optimization methods, and especially matrix factorization techniques, for very large datasets such as those produced by functional Magnetic Reasonance Imaging (fMRI). I developed new models for multi-study brain decoding, and new tools for representation learning in natural language processing.
-
-                     My Ph.D. was obtained under the supervision of [Gaël Varoquaux](http://gael-varoquaux.info), [Julien Mairal](http://lear.inrialpes.fr/people/mairal/) and [Bertrand Thirion](https://team.inria.fr/parietal/team-members/bertrand-thirions-page/). I obtained a graduate degree at École Polytechnique, and a Master of Science in applied mathematics and machine learning at Télécom ParisTech and École Normale Supérieure de Cachan, in France.
-
-                     My detailed resume can be found [here](docs/cv_eng.pdf). More details on the [research](research) and [software](software) that I do.
+                     My Ph.D. was obtained under the supervision of [Gaël Varoquaux](http://gael-varoquaux.info), [Julien Mairal](http://lear.inrialpes.fr/people/mairal/) and [Bertrand Thirion](https://team.inria.fr/parietal/team-members/bertrand-thirions-page/). I developed new stochastic algorithms and multi-task models for terabyte sized fMRI dataset analysis.
+                     
+                     My detailed resume can be found [here](docs/cv_eng.pdf). Here are more details on the [research](research) and [software](software) that I do.
 
 
   # This photo will be used in the about section
