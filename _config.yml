@@ -23,7 +23,7 @@ description:         Machine learning / Optimization /  Neuro-imaging
 author:              amensch
 
 # Fallback image and color
-accent_image:               /assets/img/agrigente-hr.jpg
+accent_image:               /assets/img/agrigente-small.jpg
 accent_color:               '#c4a071'
 
 # The font used for headings. Expects a string that is a valid CSS font-family value.
