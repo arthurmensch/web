@@ -11,7 +11,11 @@ order: 2
 
 ## Oral presentations
 
+- Geometric losses for distributional learning [Paper](http://proceedings.mlr.press/v97/mensch19a.html)
+    - June 2019: ICML (Long Beach, USA) [Slides]({{'docs/presentations/icml2019_presentation.pdf' | absolute_url}})
+
 - Differentiable Dynamic Programming for Structured Prediction and Attention [Paper](https://arxiv.org/abs/1802.03676)
+  - April 2019: Courant Institute, NYU (New York, Paris) [Slides]({{'docs/presentations/diff_dp_extended.pdf' | absolute_url }}), hosted by Joan Bruna
   - January 2019: Google (Zürich, Switzerland) [Slides]({{'docs/presentations/diff_dp_extended.pdf' | absolute_url }})
   - July 2018: ICML (Stockholm, Sweden) [Slides]({{'docs/presentations/diff_dp_icml.pdf' | absolute_url }})
   - April 2018: Facebook Artificial Intelligence Research (Paris, France) [Slides]({{'docs/presentations/diff_dp.pdf' | absolute_url }})
@@ -39,6 +43,7 @@ order: 2
   / [Slides]({{ '/docs/presentations/criteo_presentation.pdf' | absolute_url }})
 
 ## Posters
+- [ICML 2019]({{ '/docs/posters/icml2019_poster.pdf' | absolute_url }}): Geometric losses for distributional learning
 - [ICML 2018]({{ '/docs/posters/diff_dp_poster.pdf' | absolute_url }}): Differentiable Dynamic Programming for Structured Prediction and Attention
 - [OPT 2017, SMAI-MODE 2018]({{ '/docs/posters/opt_poster.pdf' | absolute_url }}): Stochastic Subsampling for Factorizing Huge Matrices
 - [ICML 2016]({{ '/docs/posters/icml_poster.pdf' | absolute_url }}): Dictionary Learning for Massive Matrix Factorization
