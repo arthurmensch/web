@@ -7,6 +7,7 @@ order: 1
 <!--author-->
 ### News
 
+- **06/19** [Preprint](https://hal.archives-ouvertes.fr/hal-02142598) on our recent work for accelerating Nash equilibrium finding, with applications to GANs  
 - **05/19** Our paper *Geometric Losses for Distributional Learning* was accepted at ICML 2019 ([Paper](https://hal.archives-ouvertes.fr/hal-02129281v1)) ([Slides]({{'docs/presentations/icml2019_presentation.pdf' | absolute_url}})) ([Poster]({{ '/docs/posters/icml2019_poster.pdf' | absolute_url }}))
 - **03/19** I am visiting Joan Bruna at NYU CIMS for three months.   
 - **01/19** [Slides]({{'docs/presentations/diff_dp_extended.pdf' | absolute_url}}) for *Differentiable Dynamic Programming for Stuctured Prediction and Attention* ([Paper](https://arxiv.org/abs/1802.03676)).
