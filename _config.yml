@@ -117,7 +117,7 @@ keep_files:
   - docs
   - .git
   - .gitignore
-destination: dist
+destination: docs
 
 kramdown:
   footnote_backlink: '&#x21a9;&#xfe0e;'
