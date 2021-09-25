@@ -13,11 +13,11 @@ url:                 https://www.amensch.fr
 baseurl:             ''
 
 # A very short description of your page
-tagline:             Machine learning / Optimization /  Neuro-imaging
+tagline:             Machine learning / Optimization
 
 # A short description of the page, used in the sidebar and as fallback for the meta description tag.
 # Markdown enabled, but don't use more than one paragraph (enforced by `>`)
-description:         Machine learning / Optimization /  Neuro-imaging
+description:         Machine learning / Optimization
 
 # This should be the same author as first entry in `_data/authors.yml`
 author:              amensch
