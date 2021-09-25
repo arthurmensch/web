@@ -1,7 +1,7 @@
 ---
 encoding: utf8
 layout: page
-title: Research
+title: Selected research
 permalink: /research/
 menu: true
 order: 2

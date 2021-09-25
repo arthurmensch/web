@@ -6,6 +6,9 @@ menu: true
 order: 4
 ---
 
+# 2020 - 2021
+
+We are giving an (introductory course)[https://github.com/data-psl/lectures2021] on Machine Learning for Master students at PSL
 # 2017
 
 ## Deep learning (M2 Data Science - Polytechnique / Paris-Saclay)

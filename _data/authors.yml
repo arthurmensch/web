@@ -8,10 +8,13 @@ amensch:
   # Used at the bottom of each page and at the top of the `about` layout
   # Markdown enabled, can use multiple paragraphs (enabled by `|`)
   about:             |
-                     I am a post-doctoral research at École Normale Supérieure, Paris, in the laboratory of [Gabriel Peyré](https://gpeyre.com).
-                     I hold a Ph.D. in machine learning, prepared in [Inria Parietal](https://team.inria.fr/parietal/) team, from 2015 to 2018. 
+                     I am a research scientist at [DeepMind](https://deepmind.com) (Paris office) that I have joined at the end of 2020.
 
-                     I am currently working in structured prediction, optimal transport and game theory.
+
+                     I was a post-doctoral research at École Normale Supérieure, Paris, in [Gabriel Peyré](https://gpeyre.com)'s lab.
+                     I hold a Ph.D. in machine learning, prepared in [Inria Parietal](https://team.inria.fr/parietal/), from 2015 to 2018. 
+
+                     I am currently interested in optimization and large-scale deep-learning, and continue to hold interest for structured prediction, optimal transport and game theory.
                      
                      My Ph.D. was obtained under the supervision of [Gaël Varoquaux](http://gael-varoquaux.info), [Julien Mairal](http://lear.inrialpes.fr/people/mairal/) and [Bertrand Thirion](https://team.inria.fr/parietal/team-members/bertrand-thirions-page/). I developed new stochastic algorithms and multi-task models for terabyte sized fMRI dataset analysis.
                      
