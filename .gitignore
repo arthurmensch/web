@@ -1,5 +1,4 @@
 # Ignore docs files
-dist
 data
 docs
 _drafts
