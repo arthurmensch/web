@@ -16,7 +16,7 @@ Le mur porteur serait déposé et remplacé par un “portique métallique”, c
 
 <br />
 
-Documents importants:
+Documents:
 
 - [Étude structure complète](/assets/docs/etude_structure.pdf), accompagnée de la garantie décennale du bureau d’étude [monbureaudetudes.com](https://monbureaudetudes.com/)
 - [Garantie décennale](/assets/docs/macon_decennale.pdf) et [responsabilité civile](/assets/docs/macon_rc.pdf) du maçon auquel nous envisageons de faire appel ([Ouverture Murs Porteurs Trémies](https://www.ouverture-murs-porteurs-tremies.com/))
@@ -27,4 +27,4 @@ N’hésitez pas à nous contacter pour que nous fassions connaissance. Nous sau
 
 Cordialement,
 
-Arthur Mensch ([arthur.mensch@gmail.com](mailto:arthur.mensch@gmail.com)) et Émilie Maysonnave
+Arthur Mensch ([arthur.mensch@gmail.com](mailto:arthur.mensch@gmail.com), 06 31 39 35 52) et Émilie Maysonnave
