@@ -12,7 +12,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2021-10-03T12:40:49+02:00',
+    INDEX_KEY: 'index--2021-10-03T12:42:46+02:00',
   };
   w._clapButton = false;
 }(window);</script>
