@@ -1,0 +1,6 @@
+I"ˆ<p>Before presenting it at ICML New York, I will give a quick overview of our work on efficient
+matrix factorization for very large datasets. Our focus was to scale <em>matrix
+factorization</em> techniques for functional MRI, a domain where data to
+decompose is now at terabyte scale. Along the way, we also designed a encouraging proof-of-concept
+experiment for collaborative filtering.</p>
+:ET

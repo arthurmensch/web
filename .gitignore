@@ -1,6 +1,5 @@
 # Ignore docs files
 data
-docs
 _drafts
 .ruby-version
 

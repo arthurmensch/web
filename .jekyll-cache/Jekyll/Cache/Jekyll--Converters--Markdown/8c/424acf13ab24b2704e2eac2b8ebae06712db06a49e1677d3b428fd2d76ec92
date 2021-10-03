@@ -1,0 +1,77 @@
+I"�%<ul class="bibliography"><li><span id="10.1371/journal.pcbi.1008795">A. Mensch, J. Mairal, B. Thirion, and G. Varoquaux, “Extracting representations of cognition across neuroimaging studies improves brain decoding,” <i>PLOS Computational Biology</i>, vol. 17, no. 5, pp. 1–20, May 2021. <a href="https://doi.org/10.1371/journal.pcbi.1008795">PDF</a></span></li>
+<li><span id="members_predictive_2020">C. Apra, C. Caucheteux, A. Mensch, and others, “Predictive usefulness of PCR testing in different patterns of Covid-19 symptomatology - Analysis of a French cohort of 12,810 outpatients,” <i>Scientific Reports</i>, 2021. <a href="https://www.medrxiv.org/content/10.1101/2020.06.07.20124438v1">PDF</a></span></li>
+<li><span id="domingoenrich2021meanfield">C. Domingo-Enrich, S. Jelassi, A. Mensch, G. Rotskoff, and J. Bruna, “A mean-field analysis of two-player zero-sum games,” in <i>Advances in Neural Information Processing Systems</i>, Dec. 2020. <a href="https://proceedings.neurips.cc/paper/2020/file/e97c864e8ac67f7aed5ce53ec28638f5-Paper.pdf">PDF</a></span></li>
+<li><span id="mensch2020online">A. Mensch and G. Peyré, “Online Sinkhorn: Optimal Transport distances from sample streams,” in <i>Advances in Neural Information Processing Systems</i>, Dec. 2020. <a href="https://proceedings.neurips.cc/paper/2020/file/123650dd0560587918b3d771cf0c0171-Paper.pdf">PDF</a></span></li>
+<li><span id="jelassi2019extrapolation">S. Jelassi, C. Domingo-Enrich, D. Scieur, A. Mensch, and J. Bruna, “Extra-gradient with player sampling for faster convergence in n-player games,” in <i>International Conference on Machine Learning</i>, Jun. 2020. <a href="https://proceedings.mlr.press/v119/jelassi20a.html">PDF</a></span></li>
+<li><span id="dadi_fine-grain_2020">K. Dadi, G. Varoquaux, A. Machlouzarides-Shalit, K. J. Gorgolewski, D. Wassermann, B. Thirion, and A. Mensch, “Fine-grain atlases of functional modes for fMRI analysis,” <i>NeuroImage</i>, vol. 221, p. 117126, Jan. 2020. <a href="https://www.sciencedirect.com/science/article/pii/S1053811920306121">PDF</a></span></li>
+<li><span id="mensch2018extractinh">A. Mensch, M. Blondel, and G. Peyré, “Geometric losses for distributional learning,” in <i>Proceedings of the International Conference in Machine Learning</i>, Feb. 2019. <a href="https://hal.archives-ouvertes.fr/hal-02129281">PDF</a></span></li>
+<li><span id="mensch2018extracting">A. Mensch, J. Mairal, B. Thirion, and G. Varoquaux, “Extracting universal representations of cognition across brain-imaging studies,” Sep. 2018. <a href="https://hal.archives-ouvertes.fr/hal-01874713">PDF</a></span></li>
+<li><span id="mensch2018differentiable">A. Mensch and M. Blondel, “Differentiable dynamic programming for structured prediction and attention,” in <i>Proceedings of the International Conference in Machine Learning</i>, Jul. 2018, pp. 3462–3471. <a href="https://arxiv.org/pdf/1802.03676">PDF</a></span></li>
+<li><span id="mensch2018stochastic">A. Mensch, J. Mairal, B. Thirion, and G. Varoquaux, “Stochastic subsampling for factorizing huge matrices,” <i>IEEE Transactions on Signal Processing</i>, vol. 66, no. 1, pp. 113–128, Jan. 2018. <a href="https://hal-cea.archives-ouvertes.fr/hal-01431618/document">PDF</a></span></li>
+<li><span id="mensch2018learning">A. Mensch, “Learning representations from functional MRI data,” PhD thesis, Université Paris-Saclay, 2018. <a href="https://hal.inria.fr/tel-01891633v1">PDF</a></span></li>
+<li><span id="mensch2017learning">A. Mensch, J. Mairal, D. Bzdok, B. Thirion, and G. Varoquaux, “Learning neural representations of human cognition across many fMRI studies,” in <i>Advances in Neural Information Processing Systems</i>, Dec. 2017, pp. 5885–5895. <a href="http://papers.nips.cc/paper/7170-learning-neural-representations-of-human-cognition-across-many-fmri-studies.pdf">PDF</a></span></li>
+<li><span id="dohmatob2016learning">E. Dohmatob, A. Mensch, G. Varoquaux, and B. Thirion, “Learning brain regions via large-scale online structured sparse dictionary learning,” in <i>Advances in Neural Information Processing Systems</i>, Dec. 2016, pp. 4610–4618. <a href="http://papers.nips.cc/paper/6352-learning-brain-regions-via-large-scale-online-structured-sparse-dictionary-learning.pdf">PDF</a></span></li>
+<li><span id="mensch2016dictionary">A. Mensch, J. Mairal, B. Thirion, and G. Varoquaux, “Dictionary learning for massive matrix factorization,” in <i>Proceedings of the International Conference on Machine Learning</i>, Jun. 2016, pp. 1737–1746. <a href="http://www.jmlr.org/proceedings/papers/v48/mensch16.pdf">PDF</a></span></li>
+<li><span id="mensch2016compressed">A. Mensch, G. Varoquaux, and B. Thirion, “Compressed online dictionary learning for fast resting-state fMRI decomposition,” in <i>IEEE International Symposium on Biomedical Imaging</i>, Apr. 2016. <a href="https://hal.inria.fr/hal-01271033/document">PDF</a></span></li>
+<li><span id="mensch2014connection">A. Mensch, E. Piuze, L. Lehnert, A. J. Bakermans, J. Sporring, G. J. Strijkers, and K. Siddiqi, “Connection forms for beating the heart,” in <i>MICCAI Workshop on Statistical Atlases and Computational Models of the Heart</i>, Sep. 2014. </span></li></ul>
+
+<h2 id="oral-presentations">Oral presentations</h2>
+
+<ul>
+  <li>Geometric losses for distributional learning <a href="http://proceedings.mlr.press/v97/mensch19a.html">Paper</a>
+    <ul>
+      <li>June 2019: ICML (Long Beach, USA) <a href="/docs/presentations/icml2019_presentation.pdf">Slides</a></li>
+    </ul>
+  </li>
+  <li>Differentiable Dynamic Programming for Structured Prediction and Attention <a href="https://arxiv.org/abs/1802.03676">Paper</a>
+    <ul>
+      <li>April 2019: Courant Institute, NYU (New York, Paris) <a href="/docs/presentations/diff_dp_extended.pdf">Slides</a>, hosted by Joan Bruna</li>
+      <li>January 2019: Google (Zürich, Switzerland) <a href="/docs/presentations/diff_dp_extended.pdf">Slides</a></li>
+      <li>July 2018: ICML (Stockholm, Sweden) <a href="/docs/presentations/diff_dp_icml.pdf">Slides</a></li>
+      <li>April 2018: Facebook Artificial Intelligence Research (Paris, France) <a href="/docs/presentations/diff_dp.pdf">Slides</a></li>
+      <li>March 2018: Deep Learning Meetup (Paris, France) <a href="/docs/presentations/diff_dp.pdf">Slides</a></li>
+    </ul>
+  </li>
+  <li>Learning representations from functional MRI Data <a href="https://tel.archives-ouvertes.fr/tel-01891633/document">Thesis</a>
+    <ul>
+      <li>November 2018: Laplace Seminar, ENS, Paris, hosted by Nicolas Keriven <a href="/docs/presentations/thesis.pdf">Slides</a></li>
+      <li>September 2018: PhD defense <a href="/docs/presentations/thesis.pdf">Slides</a></li>
+    </ul>
+  </li>
+  <li>Stochastic Subsampling for Factorizing Huge Matrices <a href="https://hal.archives-ouvertes.fr/hal-01431618">Paper</a>
+    <ul>
+      <li>July 2018: ISMP 2018 (Bordeaux, France), invited by Robert Gower <a href="/docs/presentations/ismp_presentation.pdf">Slides</a></li>
+      <li>April 2018: Aix-Marseille Université, invited by Caroline Chaux-Moulin <a href="/docs/presentations/uam_presentation.pdf">Slides</a></li>
+      <li>January 2018: ENS Ulm (Paris, France), invited by Florent Krzakala <a href="/docs/presentations/uam_presentation.pdf">Slides</a></li>
+    </ul>
+  </li>
+  <li>Learning Neural Representations of Human Cognition across Many fMRI Studies
+    <ul>
+      <li>November 2017: ATR (Kyoto, Japan), invited by <a href="http://www.cns.atr.jp/~oyamashi/contents/profile/profile_e.html">Okito Yamashita</a>. [Paper] <a href="/docs/presentations/atr_presentation.pdf">Slides</a></li>
+    </ul>
+  </li>
+  <li>Massive Matrix Factorization for Resting-State fMRI Decomposition
+    <ul>
+      <li>July 2017: ISI (Marrakech, Morocco), invited by
+<a href="http://www.math.umb.edu/people/faculty_homepage.php?id=234">David Degras</a>. <a href="/docs/presentations/icml_presentation.pdf">Slides</a></li>
+      <li>June 2016: ICML (New York, USA). <a href="http://techtalks.tv/talks/dictionary-learning-for-massive-matrix-factorization/62416/">Video</a> / <a href="http://www.slideshare.net/ruthraarthur/dictionary-learning-for-massive-matrix-factorization-66958894">SlideShare</a> / <a href="/docs/presentations/icml_presentation.pdf">Slides</a></li>
+    </ul>
+  </li>
+  <li>Massive Matrix Factorization : Application to <em>collaborative filtering</em>
+    <ul>
+      <li>October 2016: RecSys FR (Paris, France). <a href="https://www.youtube.com/watch?v=WU7GL2LFWwc">Video</a> / <a href="http://www.slideshare.net/ruthraarthur/dictionary-learning-for-massive-matrix-factorization-applications-to-collaborative-filtering">SlideShare</a>
+/ <a href="/docs/presentations/criteo_presentation.pdf">Slides</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="posters">Posters</h2>
+<ul>
+  <li><a href="/docs/posters/icml2019_poster.pdf">ICML 2019</a>: Geometric losses for distributional learning</li>
+  <li><a href="/docs/posters/diff_dp_poster.pdf">ICML 2018</a>: Differentiable Dynamic Programming for Structured Prediction and Attention</li>
+  <li><a href="/docs/posters/opt_poster.pdf">OPT 2017, SMAI-MODE 2018</a>: Stochastic Subsampling for Factorizing Huge Matrices</li>
+  <li><a href="/docs/posters/icml_poster.pdf">ICML 2016</a>: Dictionary Learning for Massive Matrix Factorization</li>
+  <li><a href="/docs/posters/isbi_poster.pdf">ISBI 2016</a>: Compressed Online Dictionary Learning for Fast fMRI Decomposition</li>
+  <li><a href="/docs/posters/ohbm_poster.pdf">OHBM 2016</a>: Compressed Online Dictionary Learning for Fast fMRI Decomposition</li>
+</ul>
+:ET
