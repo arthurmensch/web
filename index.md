@@ -1,6 +1,6 @@
 ---
 layout: about
-title: Welcome
+title: Home
 menu: true
 order: 1
 ---

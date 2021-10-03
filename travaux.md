@@ -14,6 +14,8 @@ Le mur porteur serait déposé et remplacé par un “portique métallique”, c
 
 <center><img src='/assets/img/schema_mur.png' width='800px' title='Schéma des modifications' /></center>
 
+<br />
+
 Documents importants:
 
 - [Étude structure complète](/assets/docs/etude_structure.pdf), accompagnée de la garantie décennale du bureau d’étude [monbureaudetudes.com](https://monbureaudetudes.com/)
