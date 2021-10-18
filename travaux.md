@@ -4,6 +4,8 @@ title: Travaux
 permalink: /travaux/
 menu: false
 order: 4
+redirect_from:
+  - /travaux.
 ---
 
 Chères voisines, chers voisins,
